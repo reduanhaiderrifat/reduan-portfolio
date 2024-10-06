@@ -55,13 +55,19 @@ const Page = () => {
           <ul className="menu border-r-2 text-white min-h-full w-80 p-4">
             {/* Sidebar content here */}
             <li className={getItemClass("item1")}>
-              <a onClick={() => handleItemClick("item1")}>POST PROJECT</a>
+              <button onClick={() => handleItemClick("item1")}>
+                POST PROJECT
+              </button>
             </li>
             <li className={getItemClass("item2")}>
-              <a onClick={() => handleItemClick("item2")}>MY PROJECT</a>
+              <button onClick={() => handleItemClick("item2")}>
+                MY PROJECT
+              </button>
             </li>
             <li className={getItemClass("item3")}>
-              <a onClick={() => handleItemClick("item3")}>MY CERTIFICATE</a>
+              <button onClick={() => handleItemClick("item3")}>
+                MY CERTIFICATE
+              </button>
             </li>
           </ul>
         </div>

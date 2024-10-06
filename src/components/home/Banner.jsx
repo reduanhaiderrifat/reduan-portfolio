@@ -25,38 +25,36 @@ const Banner = () => {
   }, []);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const handleMouseMove = (e) => {
-        const banner = document.querySelector(".banner-container");
-        const heart = document.createElement("span");
-        const x = e.pageX - banner.offsetLeft; // Position relative to the banner
-        const y = e.pageY - banner.offsetTop; // Position relative to the banner
-
-        heart.style.left = x - 10 + "px"; // Adjust based on heart size
-        heart.style.top = y - 10 + "px"; // Adjust based on heart size
-        banner.appendChild(heart);
-
-        // Randomly rotate the heart
-        const transformValue = Math.random() * 360;
-        heart.style.transform = "rotate(" + transformValue + "deg)";
-
-        // Set random size for the heart
-        const size = Math.random() * 50; // Random size up to 50px
-        heart.style.width = 20 + size + "px"; // Set width
-        heart.style.height = 20 + size + "px"; // Set height
-
-        // Remove the heart after 1 second
-        setTimeout(() => {
-          heart.remove();
-        }, 1000);
-      };
-
+    const handleMouseMove = (e) => {
       const banner = document.querySelector(".banner-container");
-      banner.addEventListener("mousemove", handleMouseMove);
-      return () => {
-        banner.removeEventListener("mousemove", handleMouseMove);
-      };
-    }
+      const heart = document.createElement("span");
+      const x = e.pageX - banner.offsetLeft; // Position relative to the banner
+      const y = e.pageY - banner.offsetTop; // Position relative to the banner
+
+      heart.style.left = x - 10 + "px"; // Adjust based on heart size
+      heart.style.top = y - 10 + "px"; // Adjust based on heart size
+      banner.appendChild(heart);
+
+      // Randomly rotate the heart
+      const transformValue = Math.random() * 360;
+      heart.style.transform = "rotate(" + transformValue + "deg)";
+
+      // Set random size for the heart
+      const size = Math.random() * 50; // Random size up to 50px
+      heart.style.width = 20 + size + "px"; // Set width
+      heart.style.height = 20 + size + "px"; // Set height
+
+      // Remove the heart after 1 second
+      setTimeout(() => {
+        heart.remove();
+      }, 1000);
+    };
+
+    const banner = document.querySelector(".banner-container");
+    banner.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      banner.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
   return (
