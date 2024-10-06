@@ -18,7 +18,6 @@ const Banner = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Fade-in effect for text
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 300); // Delay for 300ms
@@ -26,36 +25,38 @@ const Banner = () => {
   }, []);
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    if (typeof window !== "undefined") {
+      const handleMouseMove = (e) => {
+        const banner = document.querySelector(".banner-container");
+        const heart = document.createElement("span");
+        const x = e.pageX - banner.offsetLeft; // Position relative to the banner
+        const y = e.pageY - banner.offsetTop; // Position relative to the banner
+
+        heart.style.left = x - 10 + "px"; // Adjust based on heart size
+        heart.style.top = y - 10 + "px"; // Adjust based on heart size
+        banner.appendChild(heart);
+
+        // Randomly rotate the heart
+        const transformValue = Math.random() * 360;
+        heart.style.transform = "rotate(" + transformValue + "deg)";
+
+        // Set random size for the heart
+        const size = Math.random() * 50; // Random size up to 50px
+        heart.style.width = 20 + size + "px"; // Set width
+        heart.style.height = 20 + size + "px"; // Set height
+
+        // Remove the heart after 1 second
+        setTimeout(() => {
+          heart.remove();
+        }, 1000);
+      };
+
       const banner = document.querySelector(".banner-container");
-      const heart = document.createElement("span");
-      const x = e.pageX - banner.offsetLeft; // Position relative to the banner
-      const y = e.pageY - banner.offsetTop; // Position relative to the banner
-
-      heart.style.left = x - 10 + "px"; // Adjust based on heart size
-      heart.style.top = y - 10 + "px"; // Adjust based on heart size
-      banner.appendChild(heart);
-
-      // Randomly rotate the heart
-      const transformValue = Math.random() * 360;
-      heart.style.transform = "rotate(" + transformValue + "deg)";
-
-      // Set random size for the heart
-      const size = Math.random() * 50; // Random size up to 50px
-      heart.style.width = 20 + size + "px"; // Set width
-      heart.style.height = 20 + size + "px"; // Set height
-
-      // Remove the heart after 1 second
-      setTimeout(() => {
-        heart.remove();
-      }, 1000);
-    };
-
-    const banner = document.querySelector(".banner-container");
-    banner.addEventListener("mousemove", handleMouseMove);
-    return () => {
-      banner.removeEventListener("mousemove", handleMouseMove);
-    };
+      banner.addEventListener("mousemove", handleMouseMove);
+      return () => {
+        banner.removeEventListener("mousemove", handleMouseMove);
+      };
+    }
   }, []);
 
   return (
@@ -66,7 +67,7 @@ const Banner = () => {
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          <p className="text-xl mb-2">Hello, it's me!</p>
+          <p className="text-xl mb-2">Hello, it is me!</p>
           <h1 className="text-6xl font-bold mb-2 ">Reduan Haider Rifat</h1>
           <div className="text-3xl font-bold  mb-4">
             And I am <p className=" text-red-500"> Junior Web Developer</p>
@@ -74,7 +75,7 @@ const Banner = () => {
           <p className="py-4 text-gray-300 max-w-md mx-auto">
             Motivated junior developer skilled in HTML, CSS, and JavaScript,
             eager to design user-friendly websites and contribute to an
-            innovative organization's success.
+            innovative of organization success.
           </p>
           <div className="flex items-center justify-center gap-4">
             <Link

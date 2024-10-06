@@ -72,7 +72,7 @@ const LightSwitch = () => {
           Vue.js, and I am proficient in using Git for version control. My
           dedication to continuous learning keeps me updated with the latest
           industry trends and technologies. My objective is to contribute to an
-          organization's digital success by leveraging my front-end development
+          organization digital success by leveraging my front-end development
           skills. I am eager to take on challenging projects in an innovative
           and expanding organization, allowing me to grow professionally and
           make a significant impact.

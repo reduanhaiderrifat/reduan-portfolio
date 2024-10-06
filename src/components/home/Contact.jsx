@@ -81,12 +81,12 @@ const Contact = () => {
       <div className="flex items-start justify-between gap-8 mt-14 ">
         {/* Left Section: Contact Info */}
         <div className="w-1/2 text-white space-y-4">
-          <h1 className="text-4xl font-bold">Let's Work Together</h1>
+          <h1 className="text-4xl font-bold">Let is Work Together</h1>
           <p>
-            I’m excited to collaborate on creating exceptional web experiences!
+            I am excited to collaborate on creating exceptional web experiences!
             Whether you need a dynamic website, a user-friendly interface, or
-            innovative solutions for your digital presence, I’m here to help.
-            Let's bring your vision to life and achieve your goals together.
+            innovative solutions for your digital presence, I am here to help.
+            Let is bring your vision to life and achieve your goals together.
             Your success is my priority!
           </p>
           <p>
