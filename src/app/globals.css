@@ -3,21 +3,31 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: linear-gradient(
+    90deg,
+    rgb(1, 105, 216),
+    rgba(255, 0, 150, 0.9)
+  ); /* Eye-catching blue (primary) to pink (secondary) */
+  --foreground: #171717; /* Text color for light mode */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: linear-gradient(
+      90deg,
+      rgba(0, 123, 255, 0.9),
+      rgba(255, 0, 150, 0.9)
+    ); /* Same vibrant gradient for dark mode */
+    --foreground: #ededed; /* Text color for dark mode */
   }
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: #121212; /* Dark background color for body */
   font-family: Arial, Helvetica, sans-serif;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 @layer utilities {
