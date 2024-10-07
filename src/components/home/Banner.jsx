@@ -1,7 +1,7 @@
 "use client";
 import { RiNextjsLine, RiTailwindCssFill } from "react-icons/ri";
-// import React, { useEffect, useState } from "react";
-// import "./style.css"; // Ensure your styles are imported here
+import React, { useEffect, useState } from "react";
+import "./style.css"; // Ensure your styles are imported here
 import {
   FaFacebookF,
   FaGithub,
@@ -15,47 +15,47 @@ import { MdAddIcCall, MdAttachEmail } from "react-icons/md";
 import Link from "next/link";
 
 const Banner = () => {
-  // const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setIsVisible(true);
-  //   }, 300); // Delay for 300ms
-  //   return () => clearTimeout(timer);
-  // }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 300); // Delay for 300ms
+    return () => clearTimeout(timer);
+  }, []);
 
-  // useEffect(() => {
-  //   const handleMouseMove = (e) => {
-  //     const banner = document.querySelector(".banner-container");
-  //     const heart = document.createElement("span");
-  //     const x = e.pageX - banner.offsetLeft; // Position relative to the banner
-  //     const y = e.pageY - banner.offsetTop; // Position relative to the banner
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const banner = document.querySelector(".banner-container");
+      const heart = document.createElement("span");
+      const x = e.pageX - banner.offsetLeft; // Position relative to the banner
+      const y = e.pageY - banner.offsetTop; // Position relative to the banner
 
-  //     heart.style.left = x - 10 + "px"; // Adjust based on heart size
-  //     heart.style.top = y - 10 + "px"; // Adjust based on heart size
-  //     banner.appendChild(heart);
+      heart.style.left = x - 10 + "px"; // Adjust based on heart size
+      heart.style.top = y - 10 + "px"; // Adjust based on heart size
+      banner.appendChild(heart);
 
-  //     // Randomly rotate the heart
-  //     const transformValue = Math.random() * 360;
-  //     heart.style.transform = "rotate(" + transformValue + "deg)";
+      // Randomly rotate the heart
+      const transformValue = Math.random() * 360;
+      heart.style.transform = "rotate(" + transformValue + "deg)";
 
-  //     // Set random size for the heart
-  //     const size = Math.random() * 50; // Random size up to 50px
-  //     heart.style.width = 20 + size + "px"; // Set width
-  //     heart.style.height = 20 + size + "px"; // Set height
+      // Set random size for the heart
+      const size = Math.random() * 50; // Random size up to 50px
+      heart.style.width = 20 + size + "px"; // Set width
+      heart.style.height = 20 + size + "px"; // Set height
 
-  //     // Remove the heart after 1 second
-  //     setTimeout(() => {
-  //       heart.remove();
-  //     }, 1000);
-  //   };
+      // Remove the heart after 1 second
+      setTimeout(() => {
+        heart.remove();
+      }, 1000);
+    };
 
-  //   const banner = document.querySelector(".banner-container");
-  //   banner.addEventListener("mousemove", handleMouseMove);
-  //   return () => {
-  //     banner.removeEventListener("mousemove", handleMouseMove);
-  //   };
-  // }, []);
+    const banner = document.querySelector(".banner-container");
+    banner.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      banner.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
   return (
     <div className="banner-container min-h-[calc(100vh-236px)] flex justify-center relative bg-gray-900 text-white overflow-hidden">

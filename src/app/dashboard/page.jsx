@@ -2,10 +2,18 @@
 import MyCertificate from "@/components/dashboard/MyCertificate";
 import MyProjects from "@/components/dashboard/MyProjects";
 import ProjectPost from "@/components/dashboard/ProjectPost";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Page = () => {
   const [activeItem, setActiveItem] = useState(null); // State to track the active sidebar item
+  useEffect(() => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(
+      "<html><body></body></html>",
+      "text/html"
+    );
+    console.log(doc);
+  }, []);
 
   const handleItemClick = (item) => {
     setActiveItem(item); // Set the active item based on user selection
