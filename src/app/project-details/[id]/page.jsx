@@ -1,4 +1,5 @@
 "use client";
+import Loading from "@/app/loading";
 import usePublic from "@/hooks/usePublic";
 import { Nosifer } from "next/font/google";
 import Image from "next/image";
@@ -6,6 +7,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
 const ProjectDetails = ({ params }) => {
+  const [loading, SetLoading] = useState(true);
   const axiosPublic = usePublic();
   const [project, setData] = useState({});
   const loadedData = async () => {
@@ -16,22 +18,29 @@ const ProjectDetails = ({ params }) => {
 
         // Assuming setData expects the data directly, update it with the fetched result
         setData(res.data.result);
+        SetLoading(false);
       } catch (error) {
         console.error("Failed to fetch project details:", error);
+        SetLoading(true);
       }
     }
   };
 
-  console.log(project);
   useEffect(() => {
     loadedData();
   }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div className="text-white">
       <div className=" flex justify-center">
-        <h1 className={`text-3xl font-bold mt-4 ${nosifer.className}`}>
-          Project <span className="text-[#EF4444] ">{project?.title}</span>
-        </h1>
+        <div
+          className={`text-3xl font-bold mt-4 flex items-center gap-2 ${nosifer.className}`}
+        >
+          <p>Project</p> <p className="text-[#EF4444] ">{project?.title}</p>
+        </div>
       </div>
 
       <div className="mt-4 mx-12 rounded-lg bg-[#1F2937] p-4">
@@ -65,22 +74,22 @@ const ProjectDetails = ({ params }) => {
           <h2 className="text-xl font-bold">Technologies & Skills:</h2>
           <ul>
             {project?.selectedSkills?.map((skill, idx) => (
-              <li key={idx}>
+              <li key={idx} className="flex items-center gap-2 ">
                 {" "}
-                <soan className="font-bold text-4xl">.</soan> {skill.label}
+                <p className="font-bold text-4xl ">.</p> {skill.label}
               </li>
             ))}
           </ul>
         </div>
 
-        <p className="mt-4">
-          <span className="font-bold text-lg"> Start time:</span>{" "}
-          <span className="font-medium"> {project?.startDate}</span>
-        </p>
-        <p>
-          <span className="font-bold text-lg"> Finish time:</span>
-          <span className="font-medium"> {project?.finishDate}</span>
-        </p>
+        <div className="mt-4 flex items-center gap-3">
+          <p className="font-bold text-lg"> Start time:</p>{" "}
+          <p className="font-medium"> {project?.startDate}</p>
+        </div>
+        <div className="flex items-center gap-3">
+          <p className="font-bold text-lg"> Finish time:</p>
+          <p className="font-medium"> {project?.finishDate}</p>
+        </div>
 
         <div className="mt-4 flex justify-center">
           <Image

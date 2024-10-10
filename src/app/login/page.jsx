@@ -7,6 +7,9 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 import React, { useState } from "react"; // Import useState
+import { toast } from "react-toastify";
+import CustomToast from "@/components/shared/CustomToast";
+import ErrorToast from "@/components/shared/ErrorToast";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -34,14 +37,35 @@ const LoginPage = () => {
     // Handle response
     if (!res || res.error) {
       // Show error notification if sign-in fails
-      alert("success");
+      toast(
+        <ErrorToast
+          title="Error!"
+          message="Login Failed Email or password not matched."
+        />,
+        {
+          autoClose: false, // Disable auto-close
+          closeOnClick: true,
+          draggable: true,
+          progress: undefined, // Stop the progress bar
+          className: "border-2 border-red-500 ", // Add border and styling for error
+          theme: "dark", // Set theme to dark
+        }
+      );
+
       setLoading(false); // Reset loading state
       return; // Stop further execution
     }
 
     // If sign-in is successful, redirect or show success notification
     router.push("/");
-    alert("error");
+    toast(<CustomToast title="Success!" message="Login successfully" />, {
+      autoClose: false, // Disable auto-close
+      closeOnClick: true,
+      draggable: true,
+      progress: undefined, // Stop the progress bar
+      className: "border-2 border-white",
+      theme: "dark", // Set theme to dark
+    });
   };
 
   return (

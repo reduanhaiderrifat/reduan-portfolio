@@ -1,6 +1,8 @@
 "use client";
 import usePublic from "@/hooks/usePublic";
 import React from "react";
+import CustomToast from "../shared/CustomToast";
+import { toast } from "react-toastify";
 
 const MyCertificate = () => {
   const axiosPublic = usePublic();
@@ -10,7 +12,20 @@ const MyCertificate = () => {
 
     const res = await axiosPublic.post("/dashboard/api/resume", { resumeLink });
     if (res.status === 200) {
-      alert("ajsajs");
+      toast(
+        <CustomToast title="Success!" message="Resume Post successfully" />,
+        {
+          autoClose: false, // Disable auto-close
+          closeOnClick: true,
+          draggable: true,
+          progress: undefined, // Stop the progress bar
+          className: "border-2 border-white",
+          theme: "dark", // Set theme to dark
+        }
+      );
+    }
+    if (res.status !== 200) {
+      console.error("Data Fetch Failed");
     }
 
     e.target.reset();
@@ -24,7 +39,23 @@ const MyCertificate = () => {
       certificateLink,
     });
     if (res.status === 200) {
-      alert("ajsajs");
+      toast(
+        <CustomToast
+          title="Success!"
+          message="Certificate Post successfully"
+        />,
+        {
+          autoClose: false, // Disable auto-close
+          closeOnClick: true,
+          draggable: true,
+          progress: undefined, // Stop the progress bar
+          className: "border-2 border-white",
+          theme: "dark", // Set theme to dark
+        }
+      );
+    }
+    if (res.status !== 200) {
+      console.error("Data Fetch Failed");
     }
 
     e.target.reset();

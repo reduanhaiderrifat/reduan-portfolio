@@ -8,6 +8,9 @@ import React, { useEffect, useState } from "react";
 
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useSession } from "next-auth/react";
+import CustomToast from "../shared/CustomToast";
+import { toast } from "react-toastify";
+import ErrorToast from "../shared/ErrorToast";
 const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
 const MyProjects = () => {
   const axiosPublic = usePublic();
@@ -40,11 +43,41 @@ const MyProjects = () => {
   const handleDelete = async (id) => {
     const res = await axiosPublic.delete(`/project-details/api/${id}`);
     if (res.status === 200) {
-      alert("succecss");
+      toast(
+        <CustomToast title="Success!" message="Project successfully Delete" />,
+        {
+          autoClose: false, // Disable auto-close
+          closeOnClick: true,
+          draggable: true,
+          progress: undefined, // Stop the progress bar
+          className: "border-2 border-white",
+          theme: "dark", // Set theme to dark
+        }
+      );
     } else {
-      alert("error");
+      toast(<ErrorToast title="Error!" message="Project Delete Failed" />, {
+        autoClose: false, // Disable auto-close
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined, // Stop the progress bar
+        className: "border-2 border-red-500 ", // Add border and styling for error
+        theme: "dark", // Set theme to dark
+      });
     }
   };
+
+  if (projects?.length === 0) {
+    return (
+      <div className="flex justify-center text-white text-4xl mt-12">
+        <div className="">
+          <h1 className={`text-white text-4xl ${nosifer.className}`}>
+            My Projects
+          </h1>
+          <p className="mt-12">Loading...</p>
+        </div>
+      </div>
+    );
+  }
   return (
     <div>
       <div className="flex justify-center mt-12">
@@ -52,6 +85,7 @@ const MyProjects = () => {
           My Projects
         </h1>
       </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
         {projects?.map((project) => (
           <div

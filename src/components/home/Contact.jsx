@@ -8,6 +8,9 @@ import { MdAddCall } from "react-icons/md";
 import usePublic from "@/hooks/usePublic";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import CustomToast from "../shared/CustomToast";
+import { toast } from "react-toastify";
+import ErrorToast from "../shared/ErrorToast";
 
 const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
 
@@ -47,12 +50,29 @@ const Contact = () => {
         await axiosPublic.post("/api/message", messageData);
 
         setLoading(false); // Stop loading after successful submission
-        alert("success");
+        toast(
+          <CustomToast title="Success!" message="Message successfully sent" />,
+          {
+            autoClose: false, // Disable auto-close
+            closeOnClick: true,
+            draggable: true,
+            progress: undefined, // Stop the progress bar
+            className: "border-2 border-white",
+            theme: "dark", // Set theme to dark
+          }
+        );
         formData.reset(); // Reset form after successful submission
       })
       .catch(() => {
         setLoading(false); // Stop loading if an error occurs
-        alert("error");
+        toast(<ErrorToast title="Error!" message="Message Failed to sent." />, {
+          autoClose: false, // Disable auto-close
+          closeOnClick: true,
+          draggable: true,
+          progress: undefined, // Stop the progress bar
+          className: "border-2 border-red-500 ", // Add border and styling for error
+          theme: "dark", // Set theme to dark
+        });
       });
   };
 

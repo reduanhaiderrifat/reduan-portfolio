@@ -7,6 +7,8 @@ import { Nosifer } from "next/font/google";
 import { signOut, useSession } from "next-auth/react";
 
 import usePublic from "@/hooks/usePublic";
+import { toast } from "react-toastify";
+import CustomToast from "./CustomToast";
 
 const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
 const Navbar = () => {
@@ -34,6 +36,17 @@ const Navbar = () => {
     if (dropdownRef.current) {
       dropdownRef.current.classList.toggle("hidden");
     }
+  };
+  const handleSignOut = async () => {
+    await signOut({ callbackUrl: "/" });
+    toast(<CustomToast title="Success!" message="Logout successfully" />, {
+      autoClose: false, // Disable auto-close
+      closeOnClick: true,
+      draggable: true,
+      progress: undefined, // Stop the progress bar
+      className: "border-2 border-white",
+      theme: "dark", // Set theme to dark
+    });
   };
 
   const links = [{ title: "Home", path: "/" }];
@@ -83,7 +96,7 @@ const Navbar = () => {
                     pathname === link.path
                       ? "text-[#EF4444] font-bold"
                       : "text-white"
-                  } // Active link style
+                  }
                 >
                   {link.title}
                 </Link>
@@ -104,7 +117,8 @@ const Navbar = () => {
             <p>Loading...</p>
           ) : session?.data?.user ? ( // Check if user is logged in
             <button
-              onClick={() => signOut({ callbackUrl: "/" })}
+              // onClick={() => signOut({ callbackUrl: "/" })}
+              onClick={handleSignOut} // Use the new sign-out handler
               className="btn bg-transparent border text-white hover:text-black"
             >
               Logout

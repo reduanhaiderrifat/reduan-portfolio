@@ -4,6 +4,9 @@ import { Nosifer } from "next/font/google";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Select from "react-select";
+import CustomToast from "../shared/CustomToast";
+import { toast } from "react-toastify";
+import ErrorToast from "../shared/ErrorToast";
 
 const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
 
@@ -27,10 +30,41 @@ const skillsOptions = [
   { value: "jquery", label: "jQuery" },
   { value: "webpack", label: "Webpack" },
   { value: "babel", label: "Babel" },
+  { value: "vue", label: "Vue.js" },
+  { value: "angular", label: "Angular" },
+  { value: "php", label: "PHP" },
+  { value: "python", label: "Python" },
+  { value: "ruby", label: "Ruby" },
+  { value: "django", label: "Django" },
+  { value: "flask", label: "Flask" },
+  { value: "jest", label: "Jest" },
+  { value: "mocha", label: "Mocha" },
+  { value: "eslint", label: "ESLint" },
+  { value: "prettier", label: "Prettier" },
+  { value: "npm", label: "NPM" },
+  { value: "yarn", label: "Yarn" },
+  { value: "pwa", label: "Progressive Web Apps" },
+  { value: "websockets", label: "WebSockets" },
+  { value: "docker", label: "Docker" },
+  { value: "kubernetes", label: "Kubernetes" },
+  { value: "oauth", label: "OAuth" },
+  { value: "heroku", label: "Heroku" },
+  { value: "aws", label: "AWS" },
+  { value: "azure", label: "Azure" },
+  { value: "netlify", label: "Netlify" },
+  { value: "vercel", label: "Vercel" },
+  { value: "serviceworkers", label: "Service Workers" },
+  { value: "chartjs", label: "Chart.js" },
+  { value: "d3", label: "D3.js" },
+  { value: "mysql", label: "MySQL" },
+  { value: "postgresql", label: "PostgreSQL" },
+  { value: "sqlite", label: "SQLite" },
+  { value: "redis", label: "Redis" },
+  { value: "mariadb", label: "MariaDB" },
+  { value: "cassandra", label: "Cassandra" },
+  { value: "dynamodb", label: "DynamoDB" },
   { value: "express", label: "Express" },
-  { value: "css3", label: "CSS3" },
-  { value: "restapi", label: "REST API" },
-  // Add more skills as needed
+  { value: "cors", label: "CORS" },
 ];
 
 const imageHosting = "970729383cc876912156a6a779cb1b9f";
@@ -91,10 +125,27 @@ const ProjectPost = () => {
       if (res.data.result.acknowledged === true) {
         setLoading(false);
         reset();
-        alert("success");
+        toast(
+          <CustomToast title="Success!" message="Project post successfully" />,
+          {
+            autoClose: false, // Disable auto-close
+            closeOnClick: true,
+            draggable: true,
+            progress: undefined, // Stop the progress bar
+            className: "border-2 border-white",
+            theme: "dark", // Set theme to dark
+          }
+        );
       }
     } catch (error) {
-      alert("error");
+      toast(<ErrorToast title="Error!" message="Project POst Failed." />, {
+        autoClose: false, // Disable auto-close
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined, // Stop the progress bar
+        className: "border-2 border-red-500 ", // Add border and styling for error
+        theme: "dark", // Set theme to dark
+      });
     }
   };
 

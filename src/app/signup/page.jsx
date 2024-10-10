@@ -9,6 +9,9 @@ import Link from "next/link";
 
 import Social from "@/components/social/Social";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import CustomToast from "@/components/shared/CustomToast";
+import ErrorToast from "@/components/shared/ErrorToast";
 const SignupPage = () => {
   const axiosPublic = usePublic();
   const router = useRouter();
@@ -80,9 +83,24 @@ const SignupPage = () => {
         setOtp("");
         if (res.status === 200) {
           router.push("/");
-          alert("success");
+
+          toast(<CustomToast title="Success!" message="Sigup successfully" />, {
+            autoClose: false, // Disable auto-close
+            closeOnClick: true,
+            draggable: true,
+            progress: undefined, // Stop the progress bar
+            className: "border-2 border-white",
+            theme: "dark", // Set theme to dark
+          });
         } else {
-          alert("error");
+          toast(<ErrorToast title="Error!" message="Sigup Failed." />, {
+            autoClose: false, // Disable auto-close
+            closeOnClick: true,
+            draggable: true,
+            progress: undefined, // Stop the progress bar
+            className: "border-2 border-red-500 ", // Add border and styling for error
+            theme: "dark", // Set theme to dark
+          });
         }
       } catch (error) {
         console.error(
