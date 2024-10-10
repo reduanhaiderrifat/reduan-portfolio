@@ -35,15 +35,15 @@ const ProjectDetails = ({ params }) => {
   }
   return (
     <div className="text-white">
-      <div className=" flex justify-center">
+      <div className="flex justify-center">
         <div
-          className={`text-3xl font-bold mt-4 flex items-center gap-2 ${nosifer.className}`}
+          className={`lg:text-3xl font-bold mt-4 flex items-center gap-2 ${nosifer.className}`}
         >
           <p>Project</p> <p className="text-[#EF4444] ">{project?.title}</p>
         </div>
       </div>
 
-      <div className="mt-4 mx-12 rounded-lg bg-[#1F2937] p-4">
+      <div className="mt-4 mx-2 lg:mx-12 rounded-lg bg-[#1F2937] p-4">
         <h1 className="text-2xl font-semibold mb-8">{project?.title}</h1>
 
         <div className="flex flex-col space-y-4">

@@ -83,9 +83,9 @@ const Contact = () => {
       >
         Contact Me
       </h2>
-      <div className="flex items-start justify-between gap-8 mt-14 ">
+      <div className="grid grid-cols-1 lg:flex items-start justify-between gap-8 mt-14 ">
         {/* Left Section: Contact Info */}
-        <div className="w-1/2 text-white space-y-4">
+        <div className="lg:w-1/2 text-white space-y-4">
           <h1 className="text-4xl font-bold">Let is Work Together</h1>
           <p>
             I am excited to collaborate on creating exceptional web experiences!
@@ -112,7 +112,7 @@ const Contact = () => {
         </div>
 
         {/* Right Section: Contact Form */}
-        <div className="w-1/2">
+        <div className="lg:w-1/2">
           <form
             onSubmit={handleMessage}
             className="space-y-4 bg-gray-800 p-6 rounded-lg shadow-lg text-black"

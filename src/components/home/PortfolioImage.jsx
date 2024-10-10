@@ -51,11 +51,11 @@ const LightSwitch = () => {
 
         {/* Paragraph with opacity based on isOn state */}
         <div
-          className={`w-4/5 transition-opacity duration-300 ${
+          className={`lg:w-4/5 transition-opacity duration-300 mb-24 lg:mb-0 ${
             isOn ? "opacity-100 text-white" : "opacity-0"
           }`}
         >
-          <p className="text-2xl text-[#EF4444] font-bold">About Me</p>
+          <p className="text-2xl text-[#EF4444] font-bold ">About Me</p>
           <br /> As a highly motivated junior front-end web developer, I am
           passionate about creating engaging and user-friendly websites. With a
           solid foundation in HTML, CSS, and JavaScript, I am committed to
@@ -82,12 +82,12 @@ const LightSwitch = () => {
         {isOn &&
           !loading &&
           resume?.length > 0 && ( // Check if there is at least one resume
-            <Link href={resume[0]?.resumeLink} className="btn">
+            <Link href={resume[0]?.resumeLink} className="btn ">
               Download Resume <FaDownload />
             </Link>
           )}
 
-        <div className="switch" onClick={toggleLight}>
+        <div className="switch mb-8 lg:mb-0" onClick={toggleLight}>
           <div className="btn"></div>
         </div>
       </div>

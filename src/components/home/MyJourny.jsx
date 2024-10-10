@@ -31,8 +31,8 @@ const MyJourny = () => {
           My Journey
         </h2>
 
-        <div className="flex justify-between gap-8 mt-4 ">
-          <div className=" w-1/2">
+        <div className="grid grid-cols-1 mx-4 lg:mx-0 lg:flex  justify-between gap-8 mt-4 ">
+          <div className=" lg:w-1/2">
             <h2 className="text-2xl text-center">Education</h2>
             <div className="border py-2 px-4 mt-9 hover:scale-105 transition-all hover:shadow-xl hover:shadow-white">
               <p className="flex items-center gap-1 ">
@@ -75,7 +75,7 @@ const MyJourny = () => {
               </p>
             </div>
           </div>
-          <div className=" w-1/2">
+          <div className=" lg:w-1/2">
             <h2 className="text-2xl text-center">Experience</h2>
             <div className="text-center border mt-9 py-4 hover:scale-105 transition-all hover:shadow-xl hover:shadow-white">
               <h1 className="flex items-center justify-center text-2xl font-semibold gap-2">

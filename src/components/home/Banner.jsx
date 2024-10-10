@@ -75,7 +75,7 @@ const Banner = () => {
             eager to design user-friendly websites and contribute to an
             innovative of organization success.
           </p>
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               className="hover:border p-2 hover:rounded-full"
               href={"https://www.facebook.com/bosonterrifat"}
@@ -130,19 +130,19 @@ const Banner = () => {
       </div>{" "}
       {/* Animating icons */}
       <FaReact
-        className="absolute text-white left-[20%] animate-spin text-glowing top-[30%]"
+        className="absolute text-white left-[5%] top-[25%] lg:left-[20%] animate-spin text-glowing lg:top-[30%]"
         size={50}
       />
       <RiTailwindCssFill
-        className="absolute text-white left-[20%] rotate-animation top-[60%]"
+        className="absolute text-white left-[5%] top-[45%] lg:left-[20%] rotate-animation lg:top-[60%]"
         size={50}
       />
       <RiNextjsLine
-        className="absolute text-white right-[20%] animate-ping top-[60%]"
+        className="absolute text-white right-[5%] top-[45%] lg:right-[20%] animate-ping lg:top-[60%]"
         size={50}
       />
       <DiMongodb
-        className="absolute text-white right-[20%] animate-pulse top-[30%]"
+        className="absolute text-white right-[5%] top-[25%] lg:right-[20%] animate-pulse lg:top-[30%]"
         size={50}
       />
     </div>

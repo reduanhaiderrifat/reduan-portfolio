@@ -73,11 +73,20 @@ const Navbar = () => {
             <ul
               ref={dropdownRef}
               tabIndex={0}
-              className="menu menu-lg space-y-2 dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow hidden"
+              className="menu menu-lg space-y-2 dropdown-content bg- rounded-box z-[1] mt-3 w-52 p-2 shadow hidden"
             >
               {links.map((link, index) => (
                 <li key={index}>
-                  <Link href={link.path}>{link.title}</Link>
+                  <Link
+                    href={link.path}
+                    className={
+                      pathname === link.path
+                        ? "text-[#EF4444] font-bold border"
+                        : "text-white"
+                    }
+                  >
+                    {link.title}
+                  </Link>
                 </li>
               ))}
             </ul>

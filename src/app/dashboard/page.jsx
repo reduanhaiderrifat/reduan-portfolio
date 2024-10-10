@@ -40,7 +40,7 @@ const Page = () => {
           {/* Page content here */}
           <label
             htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
+            className="btn border-white bg-transparent hover:bg-transparent  text-[#EF4444] drawer-button lg:hidden"
           >
             Open drawer
           </label>
@@ -52,7 +52,7 @@ const Page = () => {
             aria-label="close sidebar"
             className="drawer-overlay "
           ></label>
-          <ul className="menu border-r-2 text-white min-h-full w-80 p-4">
+          <ul className="menu border-r-2 mt-12 text-white min-h-full w-auto p-4">
             {/* Sidebar content here */}
             <li className={getItemClass("item1")}>
               <button onClick={() => handleItemClick("item1")}>
