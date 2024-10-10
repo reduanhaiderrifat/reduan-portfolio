@@ -17,7 +17,6 @@ const Navbar = () => {
   const [role, setRole] = useState({});
   const session = useSession();
   const pathname = usePathname();
-
   const email = session?.data?.user?.email;
   useEffect(() => {
     if (email) {
