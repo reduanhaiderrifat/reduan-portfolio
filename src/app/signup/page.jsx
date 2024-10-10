@@ -6,8 +6,7 @@ import { useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import emailjs from "emailjs-com";
 import Link from "next/link";
-import Notify from "simple-notify";
-import "simple-notify/dist/simple-notify.css";
+
 import Social from "@/components/social/Social";
 import { useRouter } from "next/navigation";
 const SignupPage = () => {
@@ -81,23 +80,9 @@ const SignupPage = () => {
         setOtp("");
         if (res.status === 200) {
           router.push("/");
-          new Notify({
-            title: "Signup Successful",
-            text: "You have successfully signed up.",
-            status: "success",
-            autoclose: false,
-            position: "bottom right",
-            effect: "slide",
-          });
+          alert("success");
         } else {
-          new Notify({
-            title: "Signup Failed",
-            text: "This email is already in use.",
-            status: "error",
-            autoclose: false,
-            position: "bottom right",
-            effect: "slide",
-          });
+          alert("error");
         }
       } catch (error) {
         console.error(

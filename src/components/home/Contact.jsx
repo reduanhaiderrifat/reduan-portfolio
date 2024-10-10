@@ -4,8 +4,7 @@ import emailjs from "emailjs-com"; // Import EmailJS
 import React, { useState } from "react"; // Import useState hook
 import { BiLogoGmail } from "react-icons/bi";
 import { MdAddCall } from "react-icons/md";
-import Notify from "simple-notify";
-import "simple-notify/dist/simple-notify.css";
+
 import usePublic from "@/hooks/usePublic";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -48,26 +47,12 @@ const Contact = () => {
         await axiosPublic.post("/api/message", messageData);
 
         setLoading(false); // Stop loading after successful submission
-        new Notify({
-          title: "Email sent successfully!",
-          text: "You have successfully sent the mail.",
-          status: "success",
-          autoclose: false,
-          position: "bottom right",
-          effect: "slide",
-        });
+        alert("success");
         formData.reset(); // Reset form after successful submission
       })
       .catch(() => {
         setLoading(false); // Stop loading if an error occurs
-        new Notify({
-          title: "Mail Sent Error",
-          text: "Can't send the mail.",
-          status: "error",
-          autoclose: false,
-          position: "bottom right",
-          effect: "slide",
-        });
+        alert("error");
       });
   };
 

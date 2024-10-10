@@ -3,9 +3,9 @@ import usePublic from "@/hooks/usePublic";
 import { Nosifer } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
-import "simple-notify/dist/simple-notify.css";
+
 import React, { useEffect, useState } from "react";
-import Notify from "simple-notify";
+
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useSession } from "next-auth/react";
 const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
@@ -40,23 +40,9 @@ const MyProjects = () => {
   const handleDelete = async (id) => {
     const res = await axiosPublic.delete(`/project-details/api/${id}`);
     if (res.status === 200) {
-      new Notify({
-        title: "Delete success",
-        text: "Delete success.",
-        status: "success",
-        autoclose: false,
-        position: "bottom right",
-        effect: "slide",
-      });
+      alert("succecss");
     } else {
-      new Notify({
-        title: "Login Failed",
-        text: "Delete can not success.",
-        status: "error",
-        autoclose: false,
-        position: "bottom right",
-        effect: "slide",
-      });
+      alert("error");
     }
   };
   return (

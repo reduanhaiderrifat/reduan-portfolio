@@ -5,8 +5,7 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import Notify from "simple-notify";
-import "simple-notify/dist/simple-notify.css";
+
 import React, { useState } from "react"; // Import useState
 
 const LoginPage = () => {
@@ -35,28 +34,14 @@ const LoginPage = () => {
     // Handle response
     if (!res || res.error) {
       // Show error notification if sign-in fails
-      new Notify({
-        title: "Login Failed",
-        text: "Invalid email or password.",
-        status: "error",
-        autoclose: false,
-        position: "bottom right",
-        effect: "slide",
-      });
+      alert("success");
       setLoading(false); // Reset loading state
       return; // Stop further execution
     }
 
     // If sign-in is successful, redirect or show success notification
     router.push("/");
-    new Notify({
-      title: "Login Successful",
-      text: "You have successfully logged in.",
-      status: "success",
-      autoclose: false,
-      position: "bottom right",
-      effect: "slide",
-    });
+    alert("error");
   };
 
   return (

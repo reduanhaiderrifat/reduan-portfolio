@@ -4,8 +4,6 @@ import { Nosifer } from "next/font/google";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Select from "react-select";
-import Notify from "simple-notify";
-import "simple-notify/dist/simple-notify.css";
 
 const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
 
@@ -93,24 +91,10 @@ const ProjectPost = () => {
       if (res.data.result.acknowledged === true) {
         setLoading(false);
         reset();
-        new Notify({
-          title: "Data Post",
-          text: "Your data successfully saved in MongoDB.",
-          status: "success",
-          autoclose: false,
-          position: "bottom right",
-          effect: "slide",
-        });
+        alert("success");
       }
     } catch (error) {
-      new Notify({
-        title: "Data Post Error",
-        text: "Your data was not saved in MongoDB.",
-        status: "error",
-        autoclose: false,
-        position: "bottom right",
-        effect: "slide",
-      });
+      alert("error");
     }
   };
 

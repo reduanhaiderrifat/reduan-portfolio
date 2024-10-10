@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Select from "react-select";
 
-import Notify from "simple-notify";
 const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
 
 const imageHosting = "970729383cc876912156a6a779cb1b9f";
@@ -88,24 +87,10 @@ const ProjectEdit = ({ params }) => {
       if (res.data.status === 200) {
         setLoading(false);
         reset();
-        new Notify({
-          title: "Data Post",
-          text: "Your data successfully update in MongoDB.",
-          status: "success",
-          autoclose: false,
-          position: "bottom right",
-          effect: "slide",
-        });
+        alert("succes");
       }
     } catch (error) {
-      new Notify({
-        title: "Data Post Error",
-        text: "Your data was not update in MongoDB.",
-        status: "error",
-        autoclose: false,
-        position: "bottom right",
-        effect: "slide",
-      });
+      alert("error");
     }
   };
   return (
