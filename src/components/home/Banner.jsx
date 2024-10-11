@@ -65,9 +65,11 @@ const Banner = () => {
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          <p className="text-xl mb-2">Hello, it is me!</p>
-          <h1 className="text-6xl font-bold mb-2 ">Reduan Haider Rifat</h1>
-          <div className="text-3xl font-bold  mb-4">
+          <p className="text-sm md:text-xl mb-2">Hello, it is me!</p>
+          <h1 className="text-2xl md:text-6xl font-bold mb-2 ">
+            Reduan Haider Rifat
+          </h1>
+          <div className="text-xl md:text-3xl font-bold  mb-4">
             And I am <p className=" text-red-500"> Junior Web Developer</p>
           </div>
           <p className="py-4 text-gray-300 max-w-md mx-auto">
