@@ -86,7 +86,7 @@ const Contact = () => {
       <div className="grid grid-cols-1 lg:flex items-start justify-between gap-8 mt-12 ">
         {/* Left Section: Contact Info */}
         <div className="lg:w-1/2 text-white space-y-4">
-          <h1 className="text-4xl font-bold">Let is Work Together</h1>
+          <h1 className="text-4xl font-bold">Let&#39;s Work Together</h1>
           <p>
             I am excited to collaborate on creating exceptional web experiences!
             Whether you need a dynamic website, a user-friendly interface, or
