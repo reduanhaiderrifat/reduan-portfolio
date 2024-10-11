@@ -2,6 +2,7 @@
 import MyCertificate from "@/components/dashboard/MyCertificate";
 import MyProjects from "@/components/dashboard/MyProjects";
 import ProjectPost from "@/components/dashboard/ProjectPost";
+import { connectDB } from "@/lib/connectDB";
 
 import { useSession } from "next-auth/react";
 
