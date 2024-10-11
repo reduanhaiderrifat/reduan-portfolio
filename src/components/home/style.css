@@ -158,3 +158,54 @@ body {
 .on .switch .btn::before {
   top: 15%;
 }
+
+.pulse {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  box-shadow: inset 0 0 40px #12b9ff, inset 0 0 50px #12b9ff;
+  border-radius: 50%;
+  border: 1px solid #12b9ff;
+  background: url("/pexels-pixabay-87651.jpg");
+  background-size: 200%; /* Adjust background size for smooth movement */
+  background-position: 0 center; /* Start from the left edge */
+  background-repeat: no-repeat;
+  animation: animateEarth 20s linear infinite; /* Increased time for smoother movement */
+}
+
+.pulse .dhukdhuk {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: 1px solid #12b9ff;
+  border-radius: 50%;
+  animation: animatedhukdhuk 7s ease-in-out infinite; /* Slightly increased animation duration */
+  animation-delay: calc(var(--i) * 1s); /* Increased delay between pulses */
+}
+
+@keyframes animatedhukdhuk {
+  0% {
+    width: 200px;
+    height: 200px;
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    width: 600px;
+    height: 600px;
+    opacity: 0; /* Smoothly fades out */
+  }
+}
+
+@keyframes animateEarth {
+  0% {
+    background-position: 0 center;
+  }
+  100% {
+    background-position: 100% center; /* Move across the entire width smoothly */
+  }
+}

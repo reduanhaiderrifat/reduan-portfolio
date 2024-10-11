@@ -100,6 +100,16 @@ const MyJourny = () => {
                 </button>
               )}
             </div>
+            <div className="flex justify-center p-12 mb-24">
+              <div className="pulse">
+                <div className="dhukdhuk" style={{ "--i": 1 }}></div>
+                <div className="dhukdhuk" style={{ "--i": 2 }}></div>
+                <div className="dhukdhuk" style={{ "--i": 3 }}></div>
+                <div className="dhukdhuk" style={{ "--i": 4 }}></div>
+                <div className="dhukdhuk" style={{ "--i": 5 }}></div>
+                <div className="dhukdhuk" style={{ "--i": 6 }}></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

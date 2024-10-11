@@ -83,7 +83,7 @@ const Contact = () => {
       >
         Contact Me
       </h2>
-      <div className="grid grid-cols-1 lg:flex items-start justify-between gap-8 mt-14 ">
+      <div className="grid grid-cols-1 lg:flex items-start justify-between gap-8 mt-12 ">
         {/* Left Section: Contact Info */}
         <div className="lg:w-1/2 text-white space-y-4">
           <h1 className="text-4xl font-bold">Let is Work Together</h1>

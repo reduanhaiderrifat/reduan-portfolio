@@ -136,11 +136,11 @@ const Banner = () => {
         size={50}
       />
       <RiTailwindCssFill
-        className="absolute text-white left-[5%] top-[45%] lg:left-[20%] rotate-animation lg:top-[60%]"
+        className="absolute text-white left-[5%] top-[40%] lg:left-[20%] rotate-animation lg:top-[60%]"
         size={50}
       />
       <RiNextjsLine
-        className="absolute text-white right-[5%] top-[45%] lg:right-[20%] animate-ping lg:top-[60%]"
+        className="absolute text-white right-[5%] top-[40%] lg:right-[20%] animate-ping lg:top-[60%]"
         size={50}
       />
       <DiMongodb
