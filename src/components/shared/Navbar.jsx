@@ -30,7 +30,6 @@ const Navbar = () => {
         });
     }
   }, [axiosPublic, email]);
-
   const toggleDropdown = () => {
     if (dropdownRef.current) {
       dropdownRef.current.classList.toggle("hidden");

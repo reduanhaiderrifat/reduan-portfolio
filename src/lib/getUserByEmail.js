@@ -1,8 +1,9 @@
 import { connectDB } from "./connectDB";
+// import Session from "./Session";
 
 export async function getUserByEmail(email) {
   // Connect to the database
-
+  // const email =await Session();
   const db = await connectDB();
 
   // Fetch the user document based on the email

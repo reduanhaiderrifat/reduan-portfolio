@@ -2,6 +2,9 @@
 import MyCertificate from "@/components/dashboard/MyCertificate";
 import MyProjects from "@/components/dashboard/MyProjects";
 import ProjectPost from "@/components/dashboard/ProjectPost";
+
+import { useSession } from "next-auth/react";
+
 import React, { useState, useEffect, useRef } from "react";
 
 const Page = () => {
@@ -51,6 +54,38 @@ const Page = () => {
     };
   }, [isDrawerOpen]);
 
+  const session = useSession(); // Fetch the session server-side
+  if (!session || !session?.data?.user) {
+    // Handle session logic directly
+    return (
+      <div>
+        <h1>You are not authenticated. Please log in.</h1>
+      </div>
+    );
+  }
+
+  const email = session?.data?.user.email;
+
+  // Connect to the database
+  const db = connectDB();
+  const user = db.collection("users").findOne({ email });
+
+  if (!user) {
+    return (
+      <div>
+        <h1>You are not authorized. Please log in.</h1>
+      </div>
+    );
+  }
+
+  // Check user role
+  if (user.role !== "admin") {
+    return (
+      <div>
+        <h1>You do not have access to this page.</h1>
+      </div>
+    );
+  }
   return (
     <div>
       <div className="drawer lg:drawer-open">
