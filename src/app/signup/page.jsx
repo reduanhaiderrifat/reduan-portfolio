@@ -114,9 +114,9 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="hero bg-[#282828] min-h-screen">
+    <div className="hero bg-black min-h-[calc(100vh-236px)]">
       <div className="hero-content ">
-        <div className="card bg-[#282828] w-full max-w-lg border-2 border-white shrink-0 shadow-2xl">
+        <div className="card bg-transparent w-full max-w-lg border-2 border-white shrink-0 shadow-2xl">
           <form
             onSubmit={handleSubmit(isOtpSent ? handleOtp : onSubmit)}
             className="card-body"
@@ -213,9 +213,9 @@ const SignupPage = () => {
             </div>
           </form>
           <Social />
-          <p className="text-white">
-            Already hane account{" "}
-            <Link className="btn-link" href={"/login"}>
+          <p className="text-white flex justify-center my-4">
+            Already hane account. Please{" "}
+            <Link className="btn-link ml-1" href={"/login"}>
               login
             </Link>
           </p>

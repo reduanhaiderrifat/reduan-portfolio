@@ -49,19 +49,31 @@ const ProjectDetails = ({ params }) => {
         <div className="flex flex-col space-y-4">
           <p>
             Project URL :{" "}
-            <Link href={"#"} className="underline text-blue-400">
+            <Link
+              target="_blank"
+              href={project?.liveLink}
+              className="underline text-blue-400 break-all"
+            >
               {project?.liveLink}
             </Link>
           </p>
           <p>
             Client URL:{" "}
-            <Link href={"#"} className="underline text-blue-400">
+            <Link
+              target="_blank"
+              href={project?.githubLinkclient}
+              className="underline text-blue-400 break-all"
+            >
               {project?.githubLinkclient}
             </Link>
           </p>
           <p>
             Server URL:{" "}
-            <Link href={"#"} className="underline text-blue-400">
+            <Link
+              target="_blank"
+              href={project?.githubLinkserver}
+              className="underline text-blue-400 break-all"
+            >
               {project?.githubLinkserver}
             </Link>
           </p>

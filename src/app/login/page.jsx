@@ -69,7 +69,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="hero bg-black min-h-screen">
+    <div className="hero bg-black min-h-[calc(100vh-236px)]">
       <div className="hero-content">
         <div className="card w-full max-w-lg border-2 border-white shrink-0 shadow-2xl">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -113,9 +113,9 @@ const LoginPage = () => {
             </div>
           </form>
           <Social />
-          <p className="text-white">
-            Signup{" "}
-            <Link href="/signup" className="btn-link">
+          <p className="text-white flex justify-center my-4">
+            Do not have account click{" "}
+            <Link href="/signup" className="btn-link ml-1">
               here
             </Link>
           </p>

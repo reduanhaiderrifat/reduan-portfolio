@@ -2,10 +2,12 @@
 import MyCertificate from "@/components/dashboard/MyCertificate";
 import MyProjects from "@/components/dashboard/MyProjects";
 import ProjectPost from "@/components/dashboard/ProjectPost";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const Page = () => {
   const [activeItem, setActiveItem] = useState(null); // State to track the active sidebar item
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false); // State to track the drawer state
+  const drawerRef = useRef(null); // Reference to the drawer element
 
   const handleItemClick = (item) => {
     setActiveItem(item); // Set the active item based on user selection
@@ -32,25 +34,50 @@ const Page = () => {
       : ""; // Active item class
   };
 
+  // Handle click outside to close drawer
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (drawerRef.current && !drawerRef.current.contains(event.target)) {
+        setIsDrawerOpen(false); // Close drawer if clicked outside
+      }
+    };
+    if (isDrawerOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isDrawerOpen]);
+
   return (
     <div>
       <div className="drawer lg:drawer-open">
-        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content ">
+        <input
+          id="my-drawer-2"
+          type="checkbox"
+          className="drawer-toggle"
+          checked={isDrawerOpen} // Bind the state to the checkbox
+          readOnly
+        />
+        <div className="drawer-content">
           {/* Page content here */}
           <label
             htmlFor="my-drawer-2"
-            className="btn border-white bg-transparent hover:bg-transparent  text-[#EF4444] drawer-button lg:hidden"
+            className="btn border-white bg-transparent hover:bg-transparent text-[#EF4444] drawer-button lg:hidden"
+            onClick={() => setIsDrawerOpen(true)} // Open drawer on button click
           >
             Open drawer
           </label>
           {renderContent()} {/* Render content based on the active item */}
         </div>
-        <div className="drawer-side">
+        <div ref={drawerRef} className="drawer-side">
           <label
-            htmlFor="my-drawer-2 "
+            htmlFor="my-drawer-2"
             aria-label="close sidebar"
-            className="drawer-overlay "
+            className="drawer-overlay"
+            onClick={() => setIsDrawerOpen(false)} // Close drawer on overlay click
           ></label>
           <ul className="menu border-r-2 mt-12 text-white min-h-full w-auto p-4">
             {/* Sidebar content here */}
