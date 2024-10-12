@@ -144,6 +144,7 @@
 import MyCertificate from "@/components/dashboard/MyCertificate";
 import MyProjects from "@/components/dashboard/MyProjects";
 import ProjectPost from "@/components/dashboard/ProjectPost";
+import Loading from "@/components/Loading";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect, useRef } from "react";
@@ -155,22 +156,30 @@ const Page = () => {
   const drawerRef = useRef(null);
   const session = useSession();
   const router = useRouter();
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchUser = async () => {
       if (session?.data?.user) {
-        const response = await fetch(
-          `/api/getUser?email=${session.data.user.email}`
-        );
-        if (response.ok) {
-          const data = await response.json();
-          setUser(data);
-        } else {
-          console.error("User not found or unauthorized.");
+        try {
+          const response = await fetch(
+            `/api/getUser?email=${session.data.user.email}`
+          );
+          if (response.ok) {
+            const data = await response.json();
+            setUser(data);
+          } else {
+            console.error("User not found or unauthorized.");
+          }
+        } catch (error) {
+          console.error("Error fetching user data:", error);
         }
       }
+      setLoading(false); // Set loading to false once fetching is done
     };
-    fetchUser();
+
+    if (session.status !== "loading") {
+      fetchUser();
+    }
   }, [session]);
 
   const handleItemClick = (item) => {
@@ -208,10 +217,16 @@ const Page = () => {
   // }
 
   useEffect(() => {
-    if (!user || user.role !== "admin") {
+    // Redirect if user is not an admin and the data is fully loaded
+    if (!loading && (!user || user.role !== "admin")) {
       router.push("/");
     }
-  }, [user, router]);
+  }, [loading, user, router]);
+
+  // While loading or checking the user role, show a loading indicator or nothing
+  if (loading) {
+    return <Loading />;
+  }
 
   // Render null if user is undefined or role is not admin (while redirecting)
   if (!user || user.role !== "admin") {
