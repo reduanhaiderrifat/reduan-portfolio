@@ -124,7 +124,7 @@ const Contact = () => {
                 placeholder="Your Name"
                 defaultValue={session?.data?.user?.name}
                 name="name"
-                className="input input-bordered w-full p-2 rounded-md"
+                className="input input-bordered text-white bg-black/40 border border-white w-full p-2 rounded-md"
                 required
               />
             </div>
@@ -134,7 +134,7 @@ const Contact = () => {
                 type="text"
                 name="address"
                 placeholder="Your Address"
-                className="input input-bordered w-full p-2 rounded-md"
+                className="input input-bordered text-white bg-black/40 border border-white w-full p-2 rounded-md"
                 required
               />
             </div>
@@ -144,7 +144,7 @@ const Contact = () => {
                 type="text"
                 name="subject"
                 placeholder="Subject (Optional)"
-                className="input input-bordered w-full p-2 rounded-md"
+                className="input input-bordered text-white bg-black/40 border border-white w-full p-2 rounded-md"
               />
             </div>
             <div className="form-control">
@@ -152,7 +152,7 @@ const Contact = () => {
               <textarea
                 placeholder="Type your message here..."
                 name="message"
-                className="textarea textarea-bordered w-full p-2 rounded-md h-32"
+                className="textarea textarea-bordered text-white bg-black/40 border border-white w-full p-2 rounded-md h-32"
                 required
               />
             </div>

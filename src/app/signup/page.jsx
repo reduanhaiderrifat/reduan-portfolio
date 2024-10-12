@@ -131,7 +131,7 @@ const SignupPage = () => {
                   <input
                     type="text"
                     placeholder="Name"
-                    className="input input-bordered"
+                    className="input input-bordered text-white bg-black/40 border border-white"
                     {...register("name", { required: true })}
                   />
                   {errors.name && (
@@ -145,7 +145,7 @@ const SignupPage = () => {
                   <input
                     type="email"
                     placeholder="Email"
-                    className="input input-bordered"
+                    className="input input-bordered text-white bg-black/40 border border-white"
                     {...register("email", { required: true })}
                   />
                   {errors.email && (
@@ -159,7 +159,7 @@ const SignupPage = () => {
                   <input
                     type="password"
                     placeholder="Password"
-                    className="input input-bordered"
+                    className="input input-bordered text-white bg-black/40 border border-white"
                     {...register("password", {
                       required: true,
                       minLength: 8, // Adjusted to match the minimum length of the regex pattern
@@ -200,7 +200,10 @@ const SignupPage = () => {
                     textAlign: "center", // Optional: center the text
                   }}
                   renderInput={(props) => (
-                    <input {...props} className="input input-bordered " />
+                    <input
+                      {...props}
+                      className="input input-bordered text-white bg-black/40 border border-white"
+                    />
                   )}
                 />
               </div>

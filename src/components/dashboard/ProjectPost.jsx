@@ -178,6 +178,7 @@ const ProjectPost = () => {
           </label>
           <input
             type="date"
+            placeholder="dd/mm/year"
             className="input input-bordered"
             {...register("startDate", { required: true })}
           />
@@ -193,6 +194,7 @@ const ProjectPost = () => {
           </label>
           <input
             type="date"
+            placeholder="dd/mm/year"
             className="input input-bordered"
             disabled={ongoing} // Disable if the project is ongoing
             {...register("finishDate", { required: !ongoing })}

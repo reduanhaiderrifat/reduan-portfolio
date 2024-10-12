@@ -145,6 +145,7 @@ import MyCertificate from "@/components/dashboard/MyCertificate";
 import MyProjects from "@/components/dashboard/MyProjects";
 import ProjectPost from "@/components/dashboard/ProjectPost";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import React, { useState, useEffect, useRef } from "react";
 
 const Page = () => {
@@ -153,6 +154,7 @@ const Page = () => {
   const [user, setUser] = useState(null); // State to hold user data
   const drawerRef = useRef(null);
   const session = useSession();
+  const router = useRouter();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -194,23 +196,20 @@ const Page = () => {
       : "";
   };
 
-  // Check session and user role
-  if (!session || !session.data?.user || !user) {
-    return (
-      <div>
-        <h1 className="text-white">
-          You are not authenticated. Please log in.
-        </h1>
-      </div>
-    );
-  }
+  // // Check session and user role
+  // if (!session || !session.data?.user || !user) {
+  //   return (
+  //     <div>
+  //       <h1 className="text-white">
+  //         You are not authenticated. Please log in.
+  //       </h1>
+  //     </div>
+  //   );
+  // }
 
   if (user.role !== "admin") {
-    return (
-      <div>
-        <h1 className="text-white">You do not have access to this page.</h1>
-      </div>
-    );
+    router.push("/");
+    return null;
   }
 
   return (

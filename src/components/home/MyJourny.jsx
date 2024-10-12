@@ -74,6 +74,22 @@ const MyJourny = () => {
                 Bangladesh National University.
               </p>
             </div>
+            <div className="">
+              {certificate.length > 0 ? (
+                <Link
+                  href={certificate[0]?.certificateLink} // Set the link to the first certificate
+                  className="btn mt-4 px-12 border bg-transparent text-white hover:bg-white hover:text-black"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Certificate <FaLongArrowAltRight />
+                </Link>
+              ) : (
+                <button className="btn mt-4 border bg-transparent text-white hover:bg-white hover:text-black">
+                  No Certificate Available
+                </button>
+              )}
+            </div>
           </div>
           <div className=" lg:w-1/2">
             <h2 className="text-2xl text-center">Experience</h2>
@@ -88,7 +104,7 @@ const MyJourny = () => {
               {certificate.length > 0 ? (
                 <Link
                   href={certificate[0]?.certificateLink} // Set the link to the first certificate
-                  className="btn mt-4 border bg-transparent text-white hover:bg-white hover:text-black"
+                  className="btn mt-4 px-12 border bg-transparent text-white hover:bg-white hover:text-black"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

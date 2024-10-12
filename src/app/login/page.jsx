@@ -80,7 +80,7 @@ const LoginPage = () => {
               <input
                 type="email"
                 placeholder="email"
-                className="input input-bordered"
+                className="input input-bordered text-white bg-black/40 border border-white"
                 {...register("email", { required: true })}
               />
               {errors.email && (
@@ -94,7 +94,7 @@ const LoginPage = () => {
               <input
                 type="password"
                 placeholder="password"
-                className="input input-bordered"
+                className="input input-bordered text-white bg-black/40 border border-white"
                 {...register("password", { required: true })}
               />
               {errors.password && (
