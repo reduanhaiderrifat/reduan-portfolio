@@ -100,22 +100,7 @@ const MyJourny = () => {
               </h1>{" "}
               <p>No company experience yet</p>
             </div>
-            <div className="">
-              {certificate.length > 0 ? (
-                <Link
-                  href={certificate[0]?.certificateLink} // Set the link to the first certificate
-                  className="btn mt-4 px-12 border bg-transparent text-white hover:bg-white hover:text-black"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Certificate <FaLongArrowAltRight />
-                </Link>
-              ) : (
-                <button className="btn mt-4 border bg-transparent text-white hover:bg-white hover:text-black">
-                  No Certificate Available
-                </button>
-              )}
-            </div>
+
             <div className="flex justify-center p-12 mb-24">
               <div className="pulse">
                 <div className="dhukdhuk" style={{ "--i": 1 }}></div>

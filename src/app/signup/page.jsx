@@ -183,7 +183,7 @@ const SignupPage = () => {
             {isOtpSent && (
               <div className="form-control">
                 <label className="label">
-                  <p className="label-text">Enter OTP</p>
+                  <p className="label-text text-white">Enter OTP</p>
                 </label>
                 <OtpInput
                   value={otp}
@@ -192,7 +192,7 @@ const SignupPage = () => {
                   containerStyle
                   renderSeparator={<p>-</p>}
                   inputStyle={{
-                    color: "black", // Set text color to black
+                    color: "white", // Set text color to black
                     border: "1px solid #ccc", // Optional: you can customize the border as well
                     borderRadius: "4px", // Optional: border radius
                     width: "50px", // Optional: width of each input box
