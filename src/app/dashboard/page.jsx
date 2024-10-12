@@ -207,8 +207,14 @@ const Page = () => {
   //   );
   // }
 
-  if (user.role !== "admin") {
-    router.push("/");
+  useEffect(() => {
+    if (!user || user.role !== "admin") {
+      router.push("/");
+    }
+  }, [user, router]);
+
+  // Render null if user is undefined or role is not admin (while redirecting)
+  if (!user || user.role !== "admin") {
     return null;
   }
 
