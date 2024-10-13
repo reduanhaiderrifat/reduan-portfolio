@@ -41,7 +41,9 @@ const MyProjects = () => {
   }, [axiosPublic]);
 
   const handleDelete = async (id) => {
-    const res = await axiosPublic.delete(`/project-details/api/${id}`);
+    const res = await axiosPublic.delete(`/project-details/api/${id}`, {
+      email,
+    });
     if (res.status === 200) {
       toast(
         <CustomToast title="Success!" message="Project successfully Delete" />,

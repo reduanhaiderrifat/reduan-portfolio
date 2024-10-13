@@ -38,10 +38,20 @@ export const GET = async (request, { params }) => {
 
 export const DELETE = async (request, { params }) => {
   console.log("ID I want for data:", params.id);
+  const { email } = await request.json();
   const db = await connectDB();
   const projectCollection = db.collection("projects");
+  const usersCollection = db.collection("users");
+
+  const admin = await usersCollection.findOne({ email });
+  if (!admin || admin.role !== "admin") {
+    return NextResponse.json(
+      { message: "You are not authorized to delete this project" },
+      { status: 403 }
+    );
+  }
   try {
-    const result = projectCollection.deleteOne({
+    const result = await projectCollection.deleteOne({
       _id: new ObjectId(params.id),
     });
     if (result.deletedCount === 0) {
