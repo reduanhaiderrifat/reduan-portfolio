@@ -37,7 +37,6 @@ export const GET = async (request, { params }) => {
 };
 
 export const DELETE = async (request, { params }) => {
-  console.log("ID I want for data:", params.id);
   const { email } = await request.json();
   const db = await connectDB();
   const projectCollection = db.collection("projects");
