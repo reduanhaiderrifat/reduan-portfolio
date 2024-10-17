@@ -61,7 +61,7 @@ const Navbar = () => {
   return (
     <div>
       <div
-        className="navbar text-white fixed z-1000"
+        className="navbar text-white "
         style={{
           background:
             "linear-gradient(90deg, rgba(30, 30, 30, 0.9), rgba(50, 50, 50, 0.9))", // Dark gradient
