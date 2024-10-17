@@ -70,10 +70,7 @@ const MyProjects = ({ section3Ref }) => {
 
   if (projects?.length === 0) {
     return (
-      <div
-        ref={section3Ref}
-        className="flex justify-center text-white text-4xl mt-12"
-      >
+      <div className="flex justify-center text-white text-4xl mt-12">
         <div className="">
           <h1 className={`text-white text-4xl ${nosifer.className}`}>
             My Projects
@@ -84,7 +81,7 @@ const MyProjects = ({ section3Ref }) => {
     );
   }
   return (
-    <div>
+    <div ref={section3Ref}>
       <div className="flex justify-center mt-12">
         <h1 className={`text-white text-4xl ${nosifer.className}`}>
           My Projects
