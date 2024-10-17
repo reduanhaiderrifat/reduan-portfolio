@@ -14,7 +14,7 @@ import ErrorToast from "../shared/ErrorToast";
 
 const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
 
-const Contact = () => {
+const Contact = ({ section5Ref }) => {
   const [loading, setLoading] = useState(false); // State to track loading status
   const axiosPublic = usePublic();
   const session = useSession();
@@ -77,7 +77,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="p-8">
+    <div ref={section5Ref} className="p-8">
       <h2
         className={`text-4xl font-bold text-center mb-8 text-white ${nosifer.className}`}
       >

@@ -70,7 +70,10 @@ const MyProjects = () => {
 
   if (projects?.length === 0) {
     return (
-      <div className="flex justify-center text-white text-4xl mt-12">
+      <div
+        ref={section3Ref}
+        className="flex justify-center text-white text-4xl mt-12"
+      >
         <div className="">
           <h1 className={`text-white text-4xl ${nosifer.className}`}>
             My Projects

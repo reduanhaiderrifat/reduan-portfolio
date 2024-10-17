@@ -9,9 +9,9 @@ import { SiMongodb } from "react-icons/si";
 import { RiNextjsLine, RiTailwindCssLine } from "react-icons/ri";
 import { TbBrandJavascript } from "react-icons/tb";
 const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
-const MySkills = () => {
+const MySkills = ({ section2Ref }) => {
   return (
-    <div className="mt-24">
+    <div ref={section2Ref} className="mt-24">
       <div className="flex justify-center text-white ">
         <h1 className={`text-4xl font-bold py-12 ${nosifer.className}`}>
           My Skils

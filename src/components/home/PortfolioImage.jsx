@@ -6,7 +6,7 @@ import Link from "next/link";
 import { FaDownload } from "react-icons/fa";
 import usePublic from "@/hooks/usePublic";
 
-const LightSwitch = () => {
+const LightSwitch = ({ section1Ref }) => {
   const axiosPublic = usePublic();
   const [isOn, setIsOn] = useState(false); // State to toggle light
   const [audio, setAudio] = useState(null); // State for audio
@@ -42,7 +42,7 @@ const LightSwitch = () => {
   }, []);
 
   return (
-    <div className={`${isOn ? "on" : ""}`}>
+    <div ref={section1Ref} className={`${isOn ? "on" : ""}`}>
       <div className="light min-h-[600px] w-full flex flex-col justify-center items-center p-4">
         <div className="bulb">
           {/* <span></span>

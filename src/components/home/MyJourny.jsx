@@ -7,7 +7,7 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 import { MdDateRange } from "react-icons/md";
 import { TbDeviceImacSearch } from "react-icons/tb";
 const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
-const MyJourny = () => {
+const MyJourny = ({ section4Ref }) => {
   const axiosPublic = usePublic();
   const [certificate, setCertificate] = useState([]);
 
@@ -25,7 +25,7 @@ const MyJourny = () => {
     loadedCertificate();
   }, []);
   return (
-    <div className="my-24 overflow-hidden  py-12">
+    <div ref={section4Ref} className="my-24 overflow-hidden  py-12">
       <div className=" text-white">
         <h2 className={`text-4xl ${nosifer.className} flex justify-center`}>
           My Journey
