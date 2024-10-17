@@ -61,7 +61,7 @@ const Navbar = () => {
   return (
     <div>
       <div
-        className="navbar text-white fixed"
+        className="navbar text-white fixed z-1000"
         style={{
           background:
             "linear-gradient(90deg, rgba(30, 30, 30, 0.9), rgba(50, 50, 50, 0.9))", // Dark gradient
@@ -85,7 +85,7 @@ const Navbar = () => {
               <li>
                 <button
                   onClick={() => scrollToSection(section1Ref)}
-                  className="nav-button focus:text-white"
+                  className="nav-button focus:text-[#EF4444]"
                 >
                   About
                 </button>
@@ -93,7 +93,7 @@ const Navbar = () => {
               <li>
                 <button
                   onClick={() => scrollToSection(section2Ref)}
-                  className="nav-button focus:text-white"
+                  className="nav-button focus:text-[#EF4444]"
                 >
                   Skills
                 </button>
@@ -101,7 +101,7 @@ const Navbar = () => {
               <li>
                 <button
                   onClick={() => scrollToSection(section3Ref)}
-                  className="nav-button focus:text-white"
+                  className="nav-button focus:text-[#EF4444]"
                 >
                   Projects
                 </button>
@@ -109,7 +109,7 @@ const Navbar = () => {
               <li>
                 <button
                   onClick={() => scrollToSection(section4Ref)}
-                  className="nav-button focus:text-white"
+                  className="nav-button focus:text-[#EF4444]"
                 >
                   Journey
                 </button>
@@ -117,7 +117,7 @@ const Navbar = () => {
               <li>
                 <button
                   onClick={() => scrollToSection(section5Ref)}
-                  className="nav-button focus:text-white"
+                  className="nav-button focus:text-[#EF4444]"
                 >
                   Contact
                 </button>
@@ -147,7 +147,7 @@ const Navbar = () => {
             <li>
               <button
                 onClick={() => scrollToSection(section1Ref)}
-                className="nav-button focus:text-white"
+                className="nav-button focus:text-[#EF4444]"
               >
                 About
               </button>
@@ -155,7 +155,7 @@ const Navbar = () => {
             <li>
               <button
                 onClick={() => scrollToSection(section2Ref)}
-                className="nav-button focus:text-white"
+                className="nav-button focus:text-[#EF4444]"
               >
                 Skills
               </button>
@@ -163,7 +163,7 @@ const Navbar = () => {
             <li>
               <button
                 onClick={() => scrollToSection(section3Ref)}
-                className="nav-button focus:text-white"
+                className="nav-button focus:text-[#EF4444]"
               >
                 Projects
               </button>
@@ -171,7 +171,7 @@ const Navbar = () => {
             <li>
               <button
                 onClick={() => scrollToSection(section4Ref)}
-                className="nav-button focus:text-white"
+                className="nav-button focus:text-[#EF4444]"
               >
                 Journey
               </button>
@@ -179,7 +179,7 @@ const Navbar = () => {
             <li>
               <button
                 onClick={() => scrollToSection(section5Ref)}
-                className="nav-button focus:text-white"
+                className="nav-button focus:text-[#EF4444]"
               >
                 Contact
               </button>
