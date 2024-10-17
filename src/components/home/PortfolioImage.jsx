@@ -1,11 +1,12 @@
 "use client";
-
+import { FaArrowUpLong } from "react-icons/fa6";
 import React, { useState, useEffect } from "react";
 import "./style.css"; // Import custom CSS here
 import Link from "next/link";
 import { FaDownload } from "react-icons/fa";
 import usePublic from "@/hooks/usePublic";
-
+import { Nosifer } from "next/font/google";
+const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
 const LightSwitch = ({ section1Ref }) => {
   const axiosPublic = usePublic();
   const [isOn, setIsOn] = useState(false); // State to toggle light
@@ -43,11 +44,13 @@ const LightSwitch = ({ section1Ref }) => {
 
   return (
     <div ref={section1Ref} className={`${isOn ? "on" : ""}`}>
+      <h1
+        className={`text-white text-center text-4xl font-bold ${nosifer.className}`}
+      >
+        About Me
+      </h1>
       <div className="light min-h-[600px] w-full flex flex-col justify-center items-center p-4">
-        <div className="bulb">
-          {/* <span></span>
-          <span></span> */}
-        </div>
+        <div className="bulb"></div>
 
         {/* Paragraph with opacity based on isOn state */}
         <div
@@ -87,9 +90,17 @@ const LightSwitch = ({ section1Ref }) => {
             </Link>
           )}
 
-        <div className="switch mb-8 lg:mb-0" onClick={toggleLight}>
-          <div className="btn"></div>
+        <div className="switch mb-8 lg:mb-0 relative" onClick={toggleLight}>
+          <div className="btn "></div>
         </div>
+
+        <h2 className="text-white text-right   bottom-4  right-7 absolute animate-bounce md:right-14 lg:bottom-0  ">
+          Click Me
+        </h2>
+        <FaArrowUpLong
+          size={24}
+          className="text-white text-right bottom-12 right-9 absolute animate-bounce md:right-16 lg:bottom-6"
+        />
       </div>
       <audio
         id="audio"
