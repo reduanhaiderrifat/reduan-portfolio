@@ -41,9 +41,7 @@ const MyProjects = ({ section3Ref }) => {
   }, [axiosPublic]);
 
   const handleDelete = async (id) => {
-    const res = await axiosPublic.delete(`/project-details/api/${id}`, {
-      email,
-    });
+    const res = await axiosPublic.delete(`/project-details/api/${id}`);
     if (res.status === 200) {
       loadedData();
       toast(

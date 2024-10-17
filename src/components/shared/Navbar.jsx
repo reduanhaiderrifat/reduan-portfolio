@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { Nosifer } from "next/font/google";
@@ -11,9 +10,12 @@ import { toast } from "react-toastify";
 import CustomToast from "./CustomToast";
 import { ScrollContext } from "@/service/ScrollProvider";
 
+import { usePathname } from "next/navigation";
+
 const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
 const Navbar = () => {
   const dropdownRef = useRef(null);
+  const pathname = usePathname();
   const axiosPublic = usePublic();
   const {
     section1Ref,
@@ -25,7 +27,6 @@ const Navbar = () => {
   } = useContext(ScrollContext);
   const [role, setRole] = useState({});
   const session = useSession();
-  const pathname = usePathname();
   const email = session?.data?.user?.email;
   useEffect(() => {
     if (email) {
@@ -96,46 +97,51 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
-              <li>
-                <button
-                  onClick={() => scrollToSection(section1Ref)}
-                  className="nav-button focus:text-[#EF4444]"
-                >
-                  About
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection(section2Ref)}
-                  className="nav-button focus:text-[#EF4444]"
-                >
-                  Skills
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection(section3Ref)}
-                  className="nav-button focus:text-[#EF4444]"
-                >
-                  Projects
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection(section4Ref)}
-                  className="nav-button focus:text-[#EF4444]"
-                >
-                  Journey
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection(section5Ref)}
-                  className="nav-button focus:text-[#EF4444]"
-                >
-                  Contact
-                </button>
-              </li>
+              {pathname === "/" && (
+                <>
+                  {" "}
+                  <li>
+                    <button
+                      onClick={() => scrollToSection(section1Ref)}
+                      className="nav-button focus:text-[#EF4444]"
+                    >
+                      About
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => scrollToSection(section2Ref)}
+                      className="nav-button focus:text-[#EF4444]"
+                    >
+                      Skills
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => scrollToSection(section3Ref)}
+                      className="nav-button focus:text-[#EF4444]"
+                    >
+                      Projects
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => scrollToSection(section4Ref)}
+                      className="nav-button focus:text-[#EF4444]"
+                    >
+                      Journey
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => scrollToSection(section5Ref)}
+                      className="nav-button focus:text-[#EF4444]"
+                    >
+                      Contact
+                    </button>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
           <a className={`text-xl text-[#EF4444]  ${nosifer.className}`}>
@@ -158,46 +164,51 @@ const Navbar = () => {
                 </Link>
               </li>
             ))}
-            <li>
-              <button
-                onClick={() => scrollToSection(section1Ref)}
-                className="nav-button focus:text-[#EF4444]"
-              >
-                About
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection(section2Ref)}
-                className="nav-button focus:text-[#EF4444]"
-              >
-                Skills
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection(section3Ref)}
-                className="nav-button focus:text-[#EF4444]"
-              >
-                Projects
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection(section4Ref)}
-                className="nav-button focus:text-[#EF4444]"
-              >
-                Journey
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection(section5Ref)}
-                className="nav-button focus:text-[#EF4444]"
-              >
-                Contact
-              </button>
-            </li>
+            {pathname === "/" && (
+              <>
+                {" "}
+                <li>
+                  <button
+                    onClick={() => scrollToSection(section1Ref)}
+                    className="nav-button focus:text-[#EF4444]"
+                  >
+                    About
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => scrollToSection(section2Ref)}
+                    className="nav-button focus:text-[#EF4444]"
+                  >
+                    Skills
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => scrollToSection(section3Ref)}
+                    className="nav-button focus:text-[#EF4444]"
+                  >
+                    Projects
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => scrollToSection(section4Ref)}
+                    className="nav-button focus:text-[#EF4444]"
+                  >
+                    Journey
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => scrollToSection(section5Ref)}
+                    className="nav-button focus:text-[#EF4444]"
+                  >
+                    Contact
+                  </button>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <div className="navbar-end">
