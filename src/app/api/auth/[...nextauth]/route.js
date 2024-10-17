@@ -1,16 +1,16 @@
 import { connectDB } from "@/lib/connectDB";
 import NextAuth from "next-auth/next";
-import CredentailsProvider from "next-auth/providers/credentials";
+import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 
 import bcrypt from "bcrypt";
-const handler = NextAuth({
+export const authOptions = {
   secret: process.env.AUTH_SECRET,
   session: {
     strategy: "jwt",
   },
   providers: [
-    CredentailsProvider({
+    CredentialsProvider({
       credentials: {
         email: {},
         password: {},
@@ -65,6 +65,6 @@ const handler = NextAuth({
   pages: {
     signIn: "/login",
   },
-});
-
+};
+export const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

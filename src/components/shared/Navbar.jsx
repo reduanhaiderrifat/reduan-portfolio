@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { Nosifer } from "next/font/google";
 import { signOut, useSession } from "next-auth/react";
@@ -9,11 +9,20 @@ import { signOut, useSession } from "next-auth/react";
 import usePublic from "@/hooks/usePublic";
 import { toast } from "react-toastify";
 import CustomToast from "./CustomToast";
+import { ScrollContext } from "@/service/ScrollProvider";
 
 const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
 const Navbar = () => {
   const dropdownRef = useRef(null);
   const axiosPublic = usePublic();
+  const {
+    section1Ref,
+    section2Ref,
+    section3Ref,
+    section4Ref,
+    section5Ref,
+    scrollToSection,
+  } = useContext(ScrollContext);
   const [role, setRole] = useState({});
   const session = useSession();
   const pathname = usePathname();
@@ -52,7 +61,7 @@ const Navbar = () => {
   return (
     <div>
       <div
-        className="navbar text-white"
+        className="navbar text-white fixed"
         style={{
           background:
             "linear-gradient(90deg, rgba(30, 30, 30, 0.9), rgba(50, 50, 50, 0.9))", // Dark gradient
@@ -71,8 +80,48 @@ const Navbar = () => {
             <ul
               ref={dropdownRef}
               tabIndex={0}
-              className="menu menu-lg space-y-2 dropdown-content bg- rounded-box z-[1] mt-3 w-52 p-2 shadow hidden"
+              className="menu menu-lg space-y-2 dropdown-content bg- rounded-box z-100 mt-3 w-52 p-2 shadow hidden"
             >
+              <li>
+                <button
+                  onClick={() => scrollToSection(section1Ref)}
+                  className="nav-button focus:text-white"
+                >
+                  About
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection(section2Ref)}
+                  className="nav-button focus:text-white"
+                >
+                  Skills
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection(section3Ref)}
+                  className="nav-button focus:text-white"
+                >
+                  Projects
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection(section4Ref)}
+                  className="nav-button focus:text-white"
+                >
+                  Journey
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection(section5Ref)}
+                  className="nav-button focus:text-white"
+                >
+                  Contact
+                </button>
+              </li>
               {links.map((link, index) => (
                 <li key={index}>
                   <Link
@@ -95,6 +144,46 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
+            <li>
+              <button
+                onClick={() => scrollToSection(section1Ref)}
+                className="nav-button focus:text-white"
+              >
+                About
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => scrollToSection(section2Ref)}
+                className="nav-button focus:text-white"
+              >
+                Skills
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => scrollToSection(section3Ref)}
+                className="nav-button focus:text-white"
+              >
+                Projects
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => scrollToSection(section4Ref)}
+                className="nav-button focus:text-white"
+              >
+                Journey
+              </button>
+            </li>
+            <li>
+              <button
+                onClick={() => scrollToSection(section5Ref)}
+                className="nav-button focus:text-white"
+              >
+                Contact
+              </button>
+            </li>
             {links.map((link, index) => (
               <li key={index}>
                 <Link

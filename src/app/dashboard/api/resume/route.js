@@ -1,4 +1,5 @@
 import { connectDB } from "@/lib/connectDB";
+import { verifyAdmin } from "@/lib/middleware";
 import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
@@ -6,7 +7,7 @@ export const POST = async (request) => {
   const currentDate = new Date(); // Get the current date
   const db = await connectDB();
   const collection = db.collection("resume");
-
+  await verifyAdmin();
   try {
     const result = await collection.insertOne({ resumeLink, currentDate }); // Wrap resumeLink in an object
     return new NextResponse(
@@ -19,7 +20,6 @@ export const POST = async (request) => {
       }
     ); // Corrected NextResponse
   } catch (error) {
-    console.error("Database insertion error:", error); // Log error for debugging
     return new NextResponse(JSON.stringify({ message: "Data post failed" }), {
       status: 500,
       headers: {

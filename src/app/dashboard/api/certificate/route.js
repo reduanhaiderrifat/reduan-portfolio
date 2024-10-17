@@ -1,4 +1,5 @@
 import { connectDB } from "@/lib/connectDB";
+import { verifyAdmin } from "@/lib/middleware";
 import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
@@ -7,7 +8,7 @@ export const POST = async (request) => {
     const currentDate = new Date(); // Create current date
     const db = await connectDB(); // Connect to the database
     const collection = db.collection("certificate");
-
+    await verifyAdmin();
     // Insert certificate link and current date into the collection
     const result = await collection.insertOne({ certificateLink, currentDate });
 

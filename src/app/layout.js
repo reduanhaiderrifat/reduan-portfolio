@@ -5,6 +5,7 @@ import Footer from "@/components/shared/Footer";
 import AuthProvider from "@/service/AuthProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ScrollProvider from "@/service/ScrollProvider";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -29,13 +30,15 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-          <Navbar />
-          <div className="min-h-[calc(100vh-236px)]">{children}</div>
-          <ToastContainer
-            position="bottom-right"
-            style={{ marginBottom: "0" }}
-          />
-          <Footer />
+          <ScrollProvider>
+            <Navbar />
+            <div className="min-h-[calc(100vh-236px)]">{children}</div>
+            <ToastContainer
+              position="bottom-right"
+              style={{ marginBottom: "0" }}
+            />
+            <Footer />
+          </ScrollProvider>
         </AuthProvider>
       </body>
     </html>
