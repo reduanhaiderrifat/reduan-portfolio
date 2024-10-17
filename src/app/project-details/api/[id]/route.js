@@ -1,4 +1,5 @@
 import { connectDB } from "@/lib/connectDB";
+import { verifyAdmin } from "@/lib/middleware";
 import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 
@@ -37,18 +38,9 @@ export const GET = async (request, { params }) => {
 };
 
 export const DELETE = async (request, { params }) => {
-  const { email } = await request.json();
   const db = await connectDB();
   const projectCollection = db.collection("projects");
-  const usersCollection = db.collection("users");
-
-  const admin = await usersCollection.findOne({ email });
-  if (!admin || admin.role !== "admin") {
-    return NextResponse.json(
-      { message: "You are not authorized to delete this project" },
-      { status: 403 }
-    );
-  }
+  await verifyAdmin();
   try {
     const result = await projectCollection.deleteOne({
       _id: new ObjectId(params.id),

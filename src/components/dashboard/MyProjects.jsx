@@ -45,6 +45,7 @@ const MyProjects = ({ section3Ref }) => {
       email,
     });
     if (res.status === 200) {
+      loadedData();
       toast(
         <CustomToast title="Success!" message="Project successfully Delete" />,
         {
