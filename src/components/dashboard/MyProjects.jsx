@@ -12,7 +12,7 @@ import CustomToast from "../shared/CustomToast";
 import { toast } from "react-toastify";
 import ErrorToast from "../shared/ErrorToast";
 const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
-const MyProjects = () => {
+const MyProjects = ({ section3Ref }) => {
   const axiosPublic = usePublic();
   const [role, setRole] = useState({});
   const [projects, setProject] = useState([]);

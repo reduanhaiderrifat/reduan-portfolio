@@ -82,6 +82,20 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-lg space-y-2 dropdown-content bg- rounded-box z-100 mt-3 w-52 p-2 shadow hidden"
             >
+              {links.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={link.path}
+                    className={
+                      pathname === link.path
+                        ? "text-[#EF4444] font-bold border"
+                        : "text-white"
+                    }
+                  >
+                    {link.title}
+                  </Link>
+                </li>
+              ))}
               <li>
                 <button
                   onClick={() => scrollToSection(section1Ref)}
@@ -122,20 +136,6 @@ const Navbar = () => {
                   Contact
                 </button>
               </li>
-              {links.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    href={link.path}
-                    className={
-                      pathname === link.path
-                        ? "text-[#EF4444] font-bold border"
-                        : "text-white"
-                    }
-                  >
-                    {link.title}
-                  </Link>
-                </li>
-              ))}
             </ul>
           </div>
           <a className={`text-xl text-[#EF4444]  ${nosifer.className}`}>
@@ -144,6 +144,20 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
+            {links.map((link, index) => (
+              <li key={index}>
+                <Link
+                  href={link.path}
+                  className={
+                    pathname === link.path
+                      ? "text-[#EF4444] font-bold"
+                      : "text-white"
+                  }
+                >
+                  {link.title}
+                </Link>
+              </li>
+            ))}
             <li>
               <button
                 onClick={() => scrollToSection(section1Ref)}
@@ -184,20 +198,6 @@ const Navbar = () => {
                 Contact
               </button>
             </li>
-            {links.map((link, index) => (
-              <li key={index}>
-                <Link
-                  href={link.path}
-                  className={
-                    pathname === link.path
-                      ? "text-[#EF4444] font-bold"
-                      : "text-white"
-                  }
-                >
-                  {link.title}
-                </Link>
-              </li>
-            ))}
           </ul>
         </div>
         <div className="navbar-end">
