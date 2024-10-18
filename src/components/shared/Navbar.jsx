@@ -4,15 +4,14 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { Nosifer } from "next/font/google";
 import { signOut, useSession } from "next-auth/react";
-
 import usePublic from "@/hooks/usePublic";
 import { toast } from "react-toastify";
 import CustomToast from "./CustomToast";
 import { ScrollContext } from "@/service/ScrollProvider";
-
 import { usePathname } from "next/navigation";
 
 const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
+
 const Navbar = () => {
   const dropdownRef = useRef(null);
   const pathname = usePathname();
@@ -25,9 +24,12 @@ const Navbar = () => {
     section5Ref,
     scrollToSection,
   } = useContext(ScrollContext);
+
   const [role, setRole] = useState({});
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Toggle state
   const session = useSession();
   const email = session?.data?.user?.email;
+
   useEffect(() => {
     if (email) {
       axiosPublic
@@ -40,20 +42,20 @@ const Navbar = () => {
         });
     }
   }, [axiosPublic, email]);
+
   const toggleDropdown = () => {
-    if (dropdownRef.current) {
-      dropdownRef.current.classList.toggle("hidden");
-    }
+    setIsDropdownOpen(!isDropdownOpen); // Toggle the dropdown open/close
   };
+
   const handleSignOut = async () => {
     await signOut({ callbackUrl: "/" });
     toast(<CustomToast title="Success!" message="Logout successfully" />, {
-      autoClose: false, // Disable auto-close
+      autoClose: false,
       closeOnClick: true,
       draggable: true,
-      progress: undefined, // Stop the progress bar
+      progress: undefined,
       className: "border-2 border-white",
-      theme: "dark", // Set theme to dark
+      theme: "dark",
     });
   };
 
@@ -62,10 +64,10 @@ const Navbar = () => {
   return (
     <div>
       <div
-        className="navbar text-white "
+        className="navbar text-white"
         style={{
           background:
-            "linear-gradient(90deg, rgba(30, 30, 30, 0.9), rgba(50, 50, 50, 0.9))", // Dark gradient
+            "linear-gradient(90deg, rgba(30, 30, 30, 0.9), rgba(50, 50, 50, 0.9))",
         }}
       >
         <div className="navbar-start">
@@ -82,11 +84,14 @@ const Navbar = () => {
               ref={dropdownRef}
               tabIndex={0}
               style={{
-                position: "absolute", // Ensure it positions above elements
-                top: "100%", // To make sure it appears below the button
+                position: "absolute",
+                top: "100%",
                 left: "0",
+                zIndex: 9999, // Ensures the dropdown is above everything
               }}
-              className="menu menu-lg space-y-2 dropdown-content bg-black rounded-box z-10000 mt-3 w-52 p-2 shadow hidden"
+              className={`menu menu-lg space-y-2 dropdown-content bg-black rounded-box mt-3 w-52 p-2 shadow ${
+                isDropdownOpen ? "block" : "hidden"
+              }`}
             >
               {links.map((link, index) => (
                 <li key={index}>
@@ -104,7 +109,6 @@ const Navbar = () => {
               ))}
               {pathname === "/" && (
                 <>
-                  {" "}
                   <li>
                     <button
                       onClick={() => scrollToSection(section1Ref)}
@@ -149,7 +153,7 @@ const Navbar = () => {
               )}
             </ul>
           </div>
-          <a className={`text-xl text-[#EF4444]  ${nosifer.className}`}>
+          <a className={`text-xl text-[#EF4444] ${nosifer.className}`}>
             Reduan.
           </a>
         </div>
@@ -171,7 +175,6 @@ const Navbar = () => {
             ))}
             {pathname === "/" && (
               <>
-                {" "}
                 <li>
                   <button
                     onClick={() => scrollToSection(section1Ref)}
@@ -225,18 +228,16 @@ const Navbar = () => {
               Dashboard
             </Link>
           )}
-          {session.status === "loading" ? ( // Show loading when the session is loading
+          {session.status === "loading" ? (
             <p>Loading...</p>
-          ) : session?.data?.user ? ( // Check if user is logged in
+          ) : session?.data?.user ? (
             <button
-              // onClick={() => signOut({ callbackUrl: "/" })}
-              onClick={handleSignOut} // Use the new sign-out handler
+              onClick={handleSignOut}
               className="btn bg-transparent border text-white hover:text-black"
             >
               Logout
             </button>
           ) : (
-            // Show login link if not logged in
             <Link
               href="/login"
               className="btn border-2 border-transparent rounded-lg transition-all duration-300 ease-in-out hover:border-white"
