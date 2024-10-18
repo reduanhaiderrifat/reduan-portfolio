@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Select from "react-select";
 
-const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
+const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] });
 
 const imageHosting = "970729383cc876912156a6a779cb1b9f";
 const imageHOstingApi = `https://api.imgbb.com/1/upload?&key=${imageHosting}`;
@@ -19,10 +19,8 @@ const ProjectEdit = ({ params }) => {
   const loadedData = async () => {
     if (params?.id) {
       try {
-        // Fetch project details
         const res = await axiosPublic.get(`/project-details/api/${params.id}`);
 
-        // Assuming setData expects the data directly, update it with the fetched result
         setData(res.data.result);
       } catch (error) {
         console.error("Failed to fetch project details:", error);
@@ -30,7 +28,6 @@ const ProjectEdit = ({ params }) => {
     }
   };
 
-  console.log(project);
   useEffect(() => {
     loadedData();
   }, []);
@@ -99,7 +96,6 @@ const ProjectEdit = ({ params }) => {
         <h2 className={`text-4xl text-white ${nosifer.className}`}>Project</h2>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-        {/* Project Title */}
         <div className="form-control mb-4">
           <label className="label">
             <p className="label-text text-white">Project Name</p>
@@ -116,7 +112,6 @@ const ProjectEdit = ({ params }) => {
           )}
         </div>
 
-        {/* Start Date */}
         <div className="form-control mb-4">
           <label className="label">
             <p className="label-text text-white">Start Date</p>
@@ -132,7 +127,6 @@ const ProjectEdit = ({ params }) => {
           )}
         </div>
 
-        {/* Finish Date */}
         <div className="form-control mb-4">
           <label className="label">
             <p className="label-text text-white">Finish Date</p>
@@ -141,7 +135,7 @@ const ProjectEdit = ({ params }) => {
             type="date"
             className="input input-bordered"
             defaultValue={project?.finishDate}
-            disabled={ongoing} // Disable if the project is ongoing
+            disabled={ongoing}
             {...register("finishDate")}
           />
           {errors.finishDate && !ongoing && (
@@ -149,19 +143,17 @@ const ProjectEdit = ({ params }) => {
           )}
         </div>
 
-        {/* Ongoing Checkbox */}
         <div className="form-control mb-4 ">
           <label className="label cursor-pointer flex items-center">
             <input
               type="checkbox"
               className="checkbox"
-              onChange={(e) => setOngoing(e.target.checked)} // Update ongoing state
+              onChange={(e) => setOngoing(e.target.checked)}
             />
             <p className=" text-white">Ongoing Project</p>
           </label>
         </div>
 
-        {/* Other Fields */}
         <div className="form-control mb-4">
           <label className="label">
             <p className="label-text text-white">Project Live Link</p>
@@ -178,7 +170,6 @@ const ProjectEdit = ({ params }) => {
           )}
         </div>
 
-        {/* Project GitHub Links */}
         <div className="form-control mb-4">
           <label className="label">
             <p className="label-text text-white">Project GitHub Client Link</p>
@@ -211,7 +202,6 @@ const ProjectEdit = ({ params }) => {
           )}
         </div>
 
-        {/* Image Upload */}
         <div className="form-control mb-4">
           <label className="label">
             <p className="label-text text-white">Project Image</p>
@@ -227,7 +217,6 @@ const ProjectEdit = ({ params }) => {
           )}
         </div>
 
-        {/* Skills Select */}
         <div className="form-control mb-4">
           <label className="label">
             <p className="label-text text-white">Skills</p>
@@ -243,7 +232,6 @@ const ProjectEdit = ({ params }) => {
           />
         </div>
 
-        {/* Content */}
         <div className="form-control mb-4">
           <label className="label">
             <p className="label-text text-white">Project Content</p>
@@ -260,7 +248,6 @@ const ProjectEdit = ({ params }) => {
           )}
         </div>
 
-        {/* Submit Button */}
         <div className="form-control mt-6">
           <button className="btn btn-primary mb-2">
             {loading ? "Loading..." : "Submit"}

@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { MdDateRange } from "react-icons/md";
 import { TbDeviceImacSearch } from "react-icons/tb";
-const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
+const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] });
 const MyJourny = ({ section4Ref }) => {
   const axiosPublic = usePublic();
   const [certificate, setCertificate] = useState([]);
@@ -17,7 +17,7 @@ const MyJourny = ({ section4Ref }) => {
 
       setCertificate(res?.data);
     } catch (error) {
-      console.error("Error fetching resume:", error); // Log the error
+      console.error("Error fetching resume:", error);
     }
   };
 
@@ -77,7 +77,7 @@ const MyJourny = ({ section4Ref }) => {
             <div className="">
               {certificate.length > 0 ? (
                 <Link
-                  href={certificate[0]?.certificateLink} // Set the link to the first certificate
+                  href={certificate[0]?.certificateLink}
                   className="btn mt-4 px-12 border bg-transparent text-white hover:bg-white hover:text-black"
                   target="_blank"
                   rel="noopener noreferrer"

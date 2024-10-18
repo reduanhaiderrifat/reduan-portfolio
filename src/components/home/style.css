@@ -45,11 +45,11 @@ span::before {
 }
 
 .animate-spin {
-  animation: spin 2s linear infinite; /* Adjust the duration as needed */
+  animation: spin 2s linear infinite;
 }
 
 .text-glowing {
-  color: white; /* Set the text color to white */
+  color: white;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
     0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 0, 0, 0.8),
     0 0 20px rgba(255, 0, 0, 0.8);
@@ -71,14 +71,13 @@ span::before {
 .container {
   position: relative;
 
-  height: 100vh; /* Ensure it takes up full viewport height */
-  width: 100vw; /* Full width */
+  height: 100vh;
+  width: 100vw;
 }
 body {
   overflow-x: hidden;
 }
 
-/* light click */
 .on {
   background: radial-gradient(#555, #111);
 }
@@ -167,10 +166,10 @@ body {
   border-radius: 50%;
   border: 1px solid #12b9ff;
   background: url("/pexels-pixabay-87651.jpg");
-  background-size: 200%; /* Adjust background size for smooth movement */
-  background-position: 0 center; /* Start from the left edge */
+  background-size: 200%;
+  background-position: 0 center;
   background-repeat: no-repeat;
-  animation: animateEarth 20s linear infinite; /* Increased time for smoother movement */
+  animation: animateEarth 20s linear infinite;
 }
 
 .pulse .dhukdhuk {
@@ -181,8 +180,8 @@ body {
   background: transparent;
   border: 1px solid #12b9ff;
   border-radius: 50%;
-  animation: animatedhukdhuk 7s ease-in-out infinite; /* Slightly increased animation duration */
-  animation-delay: calc(var(--i) * 1s); /* Increased delay between pulses */
+  animation: animatedhukdhuk 7s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 1s);
 }
 
 @keyframes animatedhukdhuk {
@@ -197,7 +196,7 @@ body {
   100% {
     width: 600px;
     height: 600px;
-    opacity: 0; /* Smoothly fades out */
+    opacity: 0;
   }
 }
 
@@ -206,6 +205,6 @@ body {
     background-position: 0 center;
   }
   100% {
-    background-position: 100% center; /* Move across the entire width smoothly */
+    background-position: 100% center;
   }
 }

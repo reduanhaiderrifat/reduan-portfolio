@@ -1,4 +1,4 @@
-import { FaCheckCircle } from "react-icons/fa"; // Import the success icon
+import { FaCheckCircle } from "react-icons/fa";
 
 const CustomToast = ({ title, message }) => (
   <div style={{ display: "flex", alignItems: "center" }}>

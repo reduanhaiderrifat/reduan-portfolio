@@ -3,14 +3,14 @@ import Link from "next/link";
 import React from "react";
 import { FaFacebook, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa";
 
-const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
+const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] });
 const Footer = () => {
   return (
     <div>
       <footer
         style={{
           background:
-            "linear-gradient(90deg, rgba(30, 30, 30, 0.9), rgba(50, 50, 50, 0.9))", // Dark gradient
+            "linear-gradient(90deg, rgba(30, 30, 30, 0.9), rgba(50, 50, 50, 0.9))",
         }}
         className="footer text-neutral-content p-10"
       >

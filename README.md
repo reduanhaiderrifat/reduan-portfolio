@@ -14,11 +14,23 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Live Link
+
+Open [https://reduan-portfolio.vercel.app](Reduan Haider Rifat) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Skill & Technology
+
+**Next.js:**React framework for building server-side rendered and static websites.
+**React:** Frontend library for building user interfaces.
+**MongoDB:** NoSQL database for storing and managing application data.
+**Axios:** Promise-based HTTP client for fetching API data.
+**React Select:** A flexible and customizable select dropdown component.
+**CSS Modules:** Scoped and modular CSS for component-specific styling.
+**Vercel:** Deployment platform for hosting Next.js applications.
 
 ## Learn More
 

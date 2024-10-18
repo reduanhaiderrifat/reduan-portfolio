@@ -14,7 +14,6 @@ export const GET = async (request, { params }) => {
       _id: new ObjectId(params.id),
     });
 
-    // Check if the result is null or undefined
     if (!result) {
       console.log("No project found with ID:", params.id);
       return new NextResponse(

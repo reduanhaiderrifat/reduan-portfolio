@@ -1,18 +1,18 @@
 "use client";
 import { FaArrowUpLong } from "react-icons/fa6";
 import React, { useState, useEffect } from "react";
-import "./style.css"; // Import custom CSS here
+import "./style.css";
 import Link from "next/link";
 import { FaDownload } from "react-icons/fa";
 import usePublic from "@/hooks/usePublic";
 import { Nosifer } from "next/font/google";
-const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
+const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] });
 const LightSwitch = ({ section1Ref }) => {
   const axiosPublic = usePublic();
-  const [isOn, setIsOn] = useState(false); // State to toggle light
-  const [audio, setAudio] = useState(null); // State for audio
+  const [isOn, setIsOn] = useState(false);
+  const [audio, setAudio] = useState(null);
   const [resume, setResume] = useState([]);
-  const [loading, setLoading] = useState(true); // State for loading
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const audioElement = document.getElementById("audio");
@@ -22,7 +22,7 @@ const LightSwitch = ({ section1Ref }) => {
   const toggleLight = () => {
     setIsOn(!isOn);
     if (audio) {
-      audio.play(); // Play the click sound
+      audio.play();
     }
   };
 
@@ -32,9 +32,9 @@ const LightSwitch = ({ section1Ref }) => {
 
       setResume(res?.data);
     } catch (error) {
-      console.error("Error fetching resume:", error); // Log the error
+      console.error("Error fetching resume:", error);
     } finally {
-      setLoading(false); // Stop loading state
+      setLoading(false);
     }
   };
 
@@ -52,7 +52,6 @@ const LightSwitch = ({ section1Ref }) => {
       <div className="light min-h-[600px] w-full flex flex-col justify-center items-center p-4">
         <div className="bulb"></div>
 
-        {/* Paragraph with opacity based on isOn state */}
         <div
           className={`lg:w-4/5 transition-opacity duration-300 mb-24 lg:mb-0 ${
             isOn ? "opacity-100 text-white" : "opacity-0"
@@ -81,14 +80,11 @@ const LightSwitch = ({ section1Ref }) => {
           make a significant impact.
         </div>
 
-        {/* Conditionally render the button based on isOn state and loading status */}
-        {isOn &&
-          !loading &&
-          resume?.length > 0 && ( // Check if there is at least one resume
-            <Link href={resume[0]?.resumeLink} className="btn ">
-              Download Resume <FaDownload />
-            </Link>
-          )}
+        {isOn && !loading && resume?.length > 0 && (
+          <Link href={resume[0]?.resumeLink} className="btn ">
+            Download Resume <FaDownload />
+          </Link>
+        )}
 
         <div className="switch mb-8 lg:mb-0 relative" onClick={toggleLight}>
           <div className="btn "></div>

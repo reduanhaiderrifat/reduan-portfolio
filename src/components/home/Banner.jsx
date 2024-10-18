@@ -1,7 +1,7 @@
 "use client";
 import { RiNextjsLine, RiTailwindCssFill } from "react-icons/ri";
 import React, { useEffect, useState } from "react";
-import "./style.css"; // Ensure your styles are imported here
+import "./style.css";
 import {
   FaFacebookF,
   FaGithub,
@@ -20,7 +20,7 @@ const Banner = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 300); // Delay for 300ms
+    }, 300);
     return () => clearTimeout(timer);
   }, []);
 
@@ -28,23 +28,20 @@ const Banner = () => {
     const handleMouseMove = (e) => {
       const banner = document.querySelector(".banner-container");
       const heart = document.createElement("span");
-      const x = e.pageX - banner.offsetLeft; // Position relative to the banner
-      const y = e.pageY - banner.offsetTop; // Position relative to the banner
+      const x = e.pageX - banner.offsetLeft;
+      const y = e.pageY - banner.offsetTop;
 
-      heart.style.left = x - 10 + "px"; // Adjust based on heart size
-      heart.style.top = y - 10 + "px"; // Adjust based on heart size
+      heart.style.left = x - 10 + "px";
+      heart.style.top = y - 10 + "px";
       banner.appendChild(heart);
 
-      // Randomly rotate the heart
       const transformValue = Math.random() * 360;
       heart.style.transform = "rotate(" + transformValue + "deg)";
 
-      // Set random size for the heart
-      const size = Math.random() * 50; // Random size up to 50px
-      heart.style.width = 20 + size + "px"; // Set width
-      heart.style.height = 20 + size + "px"; // Set height
+      const size = Math.random() * 50;
+      heart.style.width = 20 + size + "px";
+      heart.style.height = 20 + size + "px";
 
-      // Remove the heart after 1 second
       setTimeout(() => {
         heart.remove();
       }, 1000);

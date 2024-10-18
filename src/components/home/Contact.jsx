@@ -1,7 +1,7 @@
 "use client";
 import { Nosifer } from "next/font/google";
-import emailjs from "emailjs-com"; // Import EmailJS
-import React, { useState } from "react"; // Import useState hook
+import emailjs from "emailjs-com";
+import React, { useState } from "react";
 import { BiLogoGmail } from "react-icons/bi";
 import { MdAddCall } from "react-icons/md";
 
@@ -12,15 +12,15 @@ import CustomToast from "../shared/CustomToast";
 import { toast } from "react-toastify";
 import ErrorToast from "../shared/ErrorToast";
 
-const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
+const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] });
 
 const Contact = ({ section5Ref }) => {
-  const [loading, setLoading] = useState(false); // State to track loading status
+  const [loading, setLoading] = useState(false);
   const axiosPublic = usePublic();
   const session = useSession();
   const handleMessage = (e) => {
     e.preventDefault();
-    setLoading(true); // Start loading when form is submitted
+    setLoading(true);
     const formData = e.target;
     const name = formData.name.value;
     const message = formData.message.value;
@@ -38,40 +38,40 @@ const Contact = ({ section5Ref }) => {
       address,
       email: session.data.user.email,
     };
-    // Sending email using EmailJS
+
     emailjs
       .send(
-        "service_yb391cz", // Replace with your service ID
-        "template_76nsuso", // Replace with your template ID
+        "service_yb391cz",
+        "template_76nsuso",
         templateParams,
-        "6KVq2LtJsMEpyNLyC" // Replace with your user ID or public key
+        "6KVq2LtJsMEpyNLyC"
       )
       .then(async () => {
         await axiosPublic.post("/api/message", messageData);
 
-        setLoading(false); // Stop loading after successful submission
+        setLoading(false);
         toast(
           <CustomToast title="Success!" message="Message successfully sent" />,
           {
-            autoClose: false, // Disable auto-close
+            autoClose: false,
             closeOnClick: true,
             draggable: true,
-            progress: undefined, // Stop the progress bar
+            progress: undefined,
             className: "border-2 border-white",
-            theme: "dark", // Set theme to dark
+            theme: "dark",
           }
         );
-        formData.reset(); // Reset form after successful submission
+        formData.reset();
       })
       .catch(() => {
-        setLoading(false); // Stop loading if an error occurs
+        setLoading(false);
         toast(<ErrorToast title="Error!" message="Message Failed to sent." />, {
-          autoClose: false, // Disable auto-close
+          autoClose: false,
           closeOnClick: true,
           draggable: true,
-          progress: undefined, // Stop the progress bar
-          className: "border-2 border-red-500 ", // Add border and styling for error
-          theme: "dark", // Set theme to dark
+          progress: undefined,
+          className: "border-2 border-red-500 ",
+          theme: "dark",
         });
       });
   };
@@ -84,7 +84,6 @@ const Contact = ({ section5Ref }) => {
         Contact Me
       </h2>
       <div className="grid grid-cols-1 lg:flex items-start justify-between gap-8 mt-12 ">
-        {/* Left Section: Contact Info */}
         <div className="lg:w-1/2 text-white space-y-4">
           <h1 className="text-4xl font-bold">Let&#39;s Work Together</h1>
           <p>
@@ -111,7 +110,6 @@ const Contact = ({ section5Ref }) => {
           </p>
         </div>
 
-        {/* Right Section: Contact Form */}
         <div className="lg:w-1/2">
           <form
             onSubmit={handleMessage}
@@ -162,7 +160,7 @@ const Contact = ({ section5Ref }) => {
                 <button
                   type="submit"
                   className="btn w-full p-2 rounded-full bg-transparent text-white"
-                  disabled={loading} // Disable button when loading
+                  disabled={loading}
                 >
                   {loading ? "Sending..." : "Message"}
                 </button>

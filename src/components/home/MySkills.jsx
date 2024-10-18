@@ -8,7 +8,7 @@ import { SiCss3 } from "react-icons/si";
 import { SiMongodb } from "react-icons/si";
 import { RiNextjsLine, RiTailwindCssLine } from "react-icons/ri";
 import { TbBrandJavascript } from "react-icons/tb";
-const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
+const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] });
 const MySkills = ({ section2Ref }) => {
   return (
     <div ref={section2Ref} className="mt-24">

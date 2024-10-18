@@ -8,7 +8,7 @@ const ScrollProvider = ({ children }) => {
   const section3Ref = useRef(null);
   const section4Ref = useRef(null);
   const section5Ref = useRef(null);
-  // Function to scroll to a section
+
   const scrollToSection = (sectionRef) => {
     if (sectionRef && sectionRef.current) {
       sectionRef.current.scrollIntoView({ behavior: "smooth" });

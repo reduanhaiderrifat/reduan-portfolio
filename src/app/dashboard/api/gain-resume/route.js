@@ -6,15 +6,13 @@ export const GET = async () => {
   const collection = db.collection("resume");
 
   try {
-    // Fetch and sort documents by the 'submittedAt' field in descending order (newest first)
-    const result = await collection.find().sort({ currentDate: -1 }).toArray(); // Ensure the field name is correct
+    const result = await collection.find().sort({ currentDate: -1 }).toArray();
 
-    // Return a JSON response
     return new NextResponse(JSON.stringify(result), {
       message: "data fetch success",
     });
   } catch (error) {
-    console.error("Data fetch error:", error); // Log error for debugging
+    console.error("Data fetch error:", error);
     return new NextResponse(
       JSON.stringify({ message: "Data fetch failed", error: error.message }),
       {

@@ -11,7 +11,7 @@ import { useSession } from "next-auth/react";
 import CustomToast from "../shared/CustomToast";
 import { toast } from "react-toastify";
 import ErrorToast from "../shared/ErrorToast";
-const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
+const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] });
 const MyProjects = ({ section3Ref }) => {
   const axiosPublic = usePublic();
   const [role, setRole] = useState({});
@@ -23,7 +23,7 @@ const MyProjects = ({ section3Ref }) => {
       axiosPublic
         .post(`/api/user-get`, { email })
         .then((response) => {
-          setRole(response.data); // Assuming response.data contains the role
+          setRole(response.data);
         })
         .catch((error) => {
           console.error("Error fetching user role:", error);
@@ -47,22 +47,22 @@ const MyProjects = ({ section3Ref }) => {
       toast(
         <CustomToast title="Success!" message="Project successfully Delete" />,
         {
-          autoClose: false, // Disable auto-close
+          autoClose: false,
           closeOnClick: true,
           draggable: true,
-          progress: undefined, // Stop the progress bar
+          progress: undefined,
           className: "border-2 border-white",
-          theme: "dark", // Set theme to dark
+          theme: "dark",
         }
       );
     } else {
       toast(<ErrorToast title="Error!" message="Project Delete Failed" />, {
-        autoClose: false, // Disable auto-close
+        autoClose: false,
         closeOnClick: true,
         draggable: true,
-        progress: undefined, // Stop the progress bar
-        className: "border-2 border-red-500 ", // Add border and styling for error
-        theme: "dark", // Set theme to dark
+        progress: undefined,
+        className: "border-2 border-red-500 ",
+        theme: "dark",
       });
     }
   };
@@ -93,7 +93,6 @@ const MyProjects = ({ section3Ref }) => {
             key={project._id}
             className="bg-[#1F2937] rounded-lg shadow-lg overflow-hidden"
           >
-            {/* Project Header */}
             <div className="p-4   text-white">
               <Link
                 className="text-xl text-[#EF4444] font-bold"
@@ -103,7 +102,6 @@ const MyProjects = ({ section3Ref }) => {
               </Link>
             </div>
 
-            {/* Project Image */}
             <Image
               src={project?.imgURL}
               alt="Project image"
@@ -112,7 +110,6 @@ const MyProjects = ({ section3Ref }) => {
               className="w-full h-auto object-cover"
             />
 
-            {/* Project Footer */}
             <div className="p-4 flex justify-between items-center">
               <Link
                 href={`/project-details/${project?._id}`}

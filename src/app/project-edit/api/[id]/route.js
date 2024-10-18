@@ -18,12 +18,10 @@ export const POST = async (request, { params }) => {
       githubLinkserver,
     } = await request.json();
 
-    // Ensure the ID from params is a valid ObjectId
     const projectId = new ObjectId(params.id);
 
-    // Update the document by its _id
     const result = await postCollection.updateOne(
-      { _id: projectId }, // Filter to find the document by _id
+      { _id: projectId },
       {
         $set: {
           title,
@@ -35,7 +33,7 @@ export const POST = async (request, { params }) => {
           githubLinkclient,
           githubLinkserver,
         },
-      } // Update operation
+      }
     );
 
     if (result.matchedCount === 0) {

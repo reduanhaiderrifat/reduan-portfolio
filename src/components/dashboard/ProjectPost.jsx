@@ -8,7 +8,7 @@ import CustomToast from "../shared/CustomToast";
 import { toast } from "react-toastify";
 import ErrorToast from "../shared/ErrorToast";
 
-const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
+const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] });
 
 const skillsOptions = [
   { value: "html", label: "HTML" },
@@ -73,7 +73,7 @@ const imageHOstingApi = `https://api.imgbb.com/1/upload?&key=${imageHosting}`;
 const ProjectPost = () => {
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [ongoing, setOngoing] = useState(false); // State for ongoing project
+  const [ongoing, setOngoing] = useState(false);
   const axiosPublic = usePublic();
 
   const handleSkillsChange = (selectedOption) => {
@@ -128,23 +128,23 @@ const ProjectPost = () => {
         toast(
           <CustomToast title="Success!" message="Project post successfully" />,
           {
-            autoClose: false, // Disable auto-close
+            autoClose: false,
             closeOnClick: true,
             draggable: true,
-            progress: undefined, // Stop the progress bar
+            progress: undefined,
             className: "border-2 border-white",
-            theme: "dark", // Set theme to dark
+            theme: "dark",
           }
         );
       }
     } catch (error) {
       toast(<ErrorToast title="Error!" message="Project POst Failed." />, {
-        autoClose: false, // Disable auto-close
+        autoClose: false,
         closeOnClick: true,
         draggable: true,
-        progress: undefined, // Stop the progress bar
-        className: "border-2 border-red-500 ", // Add border and styling for error
-        theme: "dark", // Set theme to dark
+        progress: undefined,
+        className: "border-2 border-red-500 ",
+        theme: "dark",
       });
     }
   };
@@ -155,7 +155,6 @@ const ProjectPost = () => {
         <h2 className={`text-4xl text-white ${nosifer.className}`}>Project</h2>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-        {/* Project Title */}
         <div className="form-control mb-4">
           <label className="label">
             <p className="label-text text-white">Project Name</p>
@@ -171,7 +170,6 @@ const ProjectPost = () => {
           )}
         </div>
 
-        {/* Start Date */}
         <div className="form-control mb-4">
           <label className="label">
             <p className="label-text text-white">Start Date</p>
@@ -187,7 +185,6 @@ const ProjectPost = () => {
           )}
         </div>
 
-        {/* Finish Date */}
         <div className="form-control mb-4">
           <label className="label">
             <p className="label-text text-white">Finish Date</p>
@@ -196,7 +193,7 @@ const ProjectPost = () => {
             type="date"
             placeholder="dd/mm/year"
             className="input input-bordered"
-            disabled={ongoing} // Disable if the project is ongoing
+            disabled={ongoing}
             {...register("finishDate", { required: !ongoing })}
           />
           {errors.finishDate && !ongoing && (
@@ -204,19 +201,17 @@ const ProjectPost = () => {
           )}
         </div>
 
-        {/* Ongoing Checkbox */}
         <div className="form-control mb-4 ">
           <label className="label cursor-pointer flex items-center">
             <input
               type="checkbox"
               className="checkbox"
-              onChange={(e) => setOngoing(e.target.checked)} // Update ongoing state
+              onChange={(e) => setOngoing(e.target.checked)}
             />
             <p className=" text-white">Ongoing Project</p>
           </label>
         </div>
 
-        {/* Other Fields */}
         <div className="form-control mb-4">
           <label className="label">
             <p className="label-text text-white">Project Live Link</p>
@@ -232,7 +227,6 @@ const ProjectPost = () => {
           )}
         </div>
 
-        {/* Project GitHub Links */}
         <div className="form-control mb-4">
           <label className="label">
             <p className="label-text text-white">Project GitHub Client Link</p>
@@ -263,7 +257,6 @@ const ProjectPost = () => {
           )}
         </div>
 
-        {/* Image Upload */}
         <div className="form-control mb-4">
           <label className="label">
             <p className="label-text text-white">Project Image</p>
@@ -279,7 +272,6 @@ const ProjectPost = () => {
           )}
         </div>
 
-        {/* Skills Select */}
         <div className="form-control mb-4">
           <label className="label">
             <p className="label-text text-white">Skills</p>
@@ -294,7 +286,6 @@ const ProjectPost = () => {
           />
         </div>
 
-        {/* Content */}
         <div className="form-control mb-4">
           <label className="label">
             <p className="label-text text-white">Project Content</p>
@@ -310,7 +301,6 @@ const ProjectPost = () => {
           )}
         </div>
 
-        {/* Submit Button */}
         <div className="form-control mt-6">
           <button disabled={loading} className="btn btn-primary mb-2">
             {loading ? "Loading..." : "Submit"}

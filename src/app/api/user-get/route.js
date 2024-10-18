@@ -2,7 +2,7 @@ import { connectDB } from "@/lib/connectDB";
 import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
-  const { email } = await request.json(); // Get email from request body
+  const { email } = await request.json();
   const db = await connectDB();
   const messageCollection = db.collection("users");
   try {

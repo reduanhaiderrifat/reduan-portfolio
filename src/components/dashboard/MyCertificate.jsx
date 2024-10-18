@@ -15,12 +15,12 @@ const MyCertificate = () => {
       toast(
         <CustomToast title="Success!" message="Resume Post successfully" />,
         {
-          autoClose: false, // Disable auto-close
+          autoClose: false,
           closeOnClick: true,
           draggable: true,
-          progress: undefined, // Stop the progress bar
+          progress: undefined,
           className: "border-2 border-white",
-          theme: "dark", // Set theme to dark
+          theme: "dark",
         }
       );
     }
@@ -45,12 +45,12 @@ const MyCertificate = () => {
           message="Certificate Post successfully"
         />,
         {
-          autoClose: false, // Disable auto-close
+          autoClose: false,
           closeOnClick: true,
           draggable: true,
-          progress: undefined, // Stop the progress bar
+          progress: undefined,
           className: "border-2 border-white",
-          theme: "dark", // Set theme to dark
+          theme: "dark",
         }
       );
     }
@@ -65,7 +65,6 @@ const MyCertificate = () => {
     <div className="p-4">
       <h2 className="text-xl font-bold mb-4">Submit Your Certificates</h2>
 
-      {/* Form for Certificate Link 1 */}
       <form onSubmit={handleSubmitLink1} className="mb-4">
         <label htmlFor="resume" className="block mb-1">
           Certificate Link 1:
@@ -86,7 +85,6 @@ const MyCertificate = () => {
         </button>
       </form>
 
-      {/* Form for Certificate Link 2 */}
       <form onSubmit={handleSubmitLink2}>
         <label htmlFor="certificate" className="block mb-1">
           Certificate Link 2:

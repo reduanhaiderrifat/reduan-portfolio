@@ -5,8 +5,7 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-
-import React, { useState } from "react"; // Import useState
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 import CustomToast from "@/components/shared/CustomToast";
 import ErrorToast from "@/components/shared/ErrorToast";
@@ -19,52 +18,47 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm();
 
-  const [loading, setLoading] = useState(false); // Create loading state
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data) => {
     const { email, password } = data;
 
-    // Set loading to true when the login attempt starts
     setLoading(true);
 
-    // Attempt to sign in
     const res = await signIn("credentials", {
       email,
       password,
       redirect: false,
     });
 
-    // Handle response
     if (!res || res.error) {
-      // Show error notification if sign-in fails
       toast(
         <ErrorToast
           title="Error!"
           message="Login Failed Email or password not matched."
         />,
         {
-          autoClose: false, // Disable auto-close
+          autoClose: false,
           closeOnClick: true,
           draggable: true,
-          progress: undefined, // Stop the progress bar
-          className: "border-2 border-red-500 ", // Add border and styling for error
-          theme: "dark", // Set theme to dark
+          progress: undefined,
+          className: "border-2 border-red-500 ",
+          theme: "dark",
         }
       );
 
-      setLoading(false); // Reset loading state
-      return; // Stop further execution
+      setLoading(false);
+      return;
     }
 
-    // If sign-in is successful, redirect or show success notification
     router.push("/");
     toast(<CustomToast title="Success!" message="Login successfully" />, {
-      autoClose: false, // Disable auto-close
+      autoClose: false,
       closeOnClick: true,
       draggable: true,
-      progress: undefined, // Stop the progress bar
+      progress: undefined,
       className: "border-2 border-white",
-      theme: "dark", // Set theme to dark
+      theme: "dark",
     });
   };
 
@@ -108,7 +102,6 @@ const LoginPage = () => {
                 disabled={loading}
               >
                 {loading ? "Loading..." : "Login"}{" "}
-                {/* Change button text based on loading state */}
               </button>
             </div>
           </form>

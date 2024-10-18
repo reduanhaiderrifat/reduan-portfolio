@@ -16,9 +16,9 @@ const SignupPage = () => {
   const axiosPublic = usePublic();
   const router = useRouter();
   const [userDetails, setUserDetails] = useState();
-  const [generatedOtp, setGeneratedOtp] = useState(""); // State to store generated OTP
-  const [isOtpSent, setIsOtpSent] = useState(false); // State to track OTP input visibility
-  const [otp, setOtp] = useState(""); // State to store user-entered OTP
+  const [generatedOtp, setGeneratedOtp] = useState("");
+  const [isOtpSent, setIsOtpSent] = useState(false);
+  const [otp, setOtp] = useState("");
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -26,80 +26,73 @@ const SignupPage = () => {
     formState: { errors },
   } = useForm();
 
-  // Function to generate OTP manually (6-digit OTP)
   const generateOtp = () => {
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     return otp;
   };
 
-  // Function to handle form submission and send OTP
   const onSubmit = async (data) => {
-    const uid = uuidv4(); // Generate a new UID
+    const uid = uuidv4();
     const createdAt = new Date().toISOString();
     const userData = { ...data, uid, createdAt };
     setUserDetails(userData);
 
-    // Generate OTP
-    const otpCode = generateOtp(); // Custom OTP generator
-    setGeneratedOtp(otpCode); // Store OTP in state
+    const otpCode = generateOtp();
+    setGeneratedOtp(otpCode);
 
-    // Email template parameters
     const templateParams = {
       user_name: data.name,
-      user_email: data.email, // Make sure this matches your template variable
-      otp_code: otpCode, // Ensure that the template has {{otp_code}} in it
+      user_email: data.email,
+      otp_code: otpCode,
     };
 
     try {
       await emailjs.send(
-        "service_kujzdib", // Your service ID
-        "template_29cgxqm", // Your template ID
+        "service_kujzdib",
+        "template_29cgxqm",
         templateParams,
-        "6KVq2LtJsMEpyNLyC" // Your public key or user ID
+        "6KVq2LtJsMEpyNLyC"
       );
       console.log("OTP email sent successfully");
-      setIsOtpSent(true); // Show OTP input after email is sent
+      setIsOtpSent(true);
     } catch (error) {
       console.error(
         "Error sending email via EmailJS:",
         error.response ? error.response.data : error.message
       );
     } finally {
-      setLoading(false); // Set loading to false regardless of success or failure
+      setLoading(false);
     }
   };
 
-  // Function to handle OTP verification
   const handleOtp = async () => {
     setLoading(true);
     if (generatedOtp === otp) {
       try {
-        // If OTP is correct, submit user details to the server
         const res = await axiosPublic.post("/signup/api", userDetails);
-        console.log(res.data); // Log the response from the server
+        console.log(res.data);
 
-        // Clear OTP states after successful signup
         setIsOtpSent(false);
         setOtp("");
         if (res.status === 200) {
           router.push("/");
 
           toast(<CustomToast title="Success!" message="Sigup successfully" />, {
-            autoClose: false, // Disable auto-close
+            autoClose: false,
             closeOnClick: true,
             draggable: true,
-            progress: undefined, // Stop the progress bar
+            progress: undefined,
             className: "border-2 border-white",
-            theme: "dark", // Set theme to dark
+            theme: "dark",
           });
         } else {
           toast(<ErrorToast title="Error!" message="Sigup Failed." />, {
-            autoClose: false, // Disable auto-close
+            autoClose: false,
             closeOnClick: true,
             draggable: true,
-            progress: undefined, // Stop the progress bar
-            className: "border-2 border-red-500 ", // Add border and styling for error
-            theme: "dark", // Set theme to dark
+            progress: undefined,
+            className: "border-2 border-red-500 ",
+            theme: "dark",
           });
         }
       } catch (error) {
@@ -121,7 +114,6 @@ const SignupPage = () => {
             onSubmit={handleSubmit(isOtpSent ? handleOtp : onSubmit)}
             className="card-body"
           >
-            {/* User input fields */}
             {!isOtpSent && (
               <>
                 <div className="form-control">
@@ -162,7 +154,7 @@ const SignupPage = () => {
                     className="input input-bordered text-white bg-black/40 border border-white"
                     {...register("password", {
                       required: true,
-                      minLength: 8, // Adjusted to match the minimum length of the regex pattern
+                      minLength: 8,
                       maxLength: 20,
                       pattern: {
                         value:
@@ -179,7 +171,6 @@ const SignupPage = () => {
               </>
             )}
 
-            {/* OTP input field */}
             {isOtpSent && (
               <div className="form-control">
                 <label className="label">
@@ -188,16 +179,16 @@ const SignupPage = () => {
                 <OtpInput
                   value={otp}
                   onChange={setOtp}
-                  numInputs={6} // 6 digits for the OTP
+                  numInputs={6}
                   containerStyle
                   renderSeparator={<p>-</p>}
                   inputStyle={{
-                    color: "white", // Set text color to black
-                    border: "1px solid #ccc", // Optional: you can customize the border as well
-                    borderRadius: "4px", // Optional: border radius
-                    width: "50px", // Optional: width of each input box
-                    height: "40px", // Optional: height of each input box
-                    textAlign: "center", // Optional: center the text
+                    color: "white",
+                    border: "1px solid #ccc",
+                    borderRadius: "4px",
+                    width: "50px",
+                    height: "40px",
+                    textAlign: "center",
                   }}
                   renderInput={(props) => (
                     <input

@@ -3,13 +3,13 @@ import { verifyAdmin } from "@/lib/middleware";
 import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
-  const { resumeLink } = await request.json(); // Awaiting the JSON parsing
-  const currentDate = new Date(); // Get the current date
+  const { resumeLink } = await request.json();
+  const currentDate = new Date();
   const db = await connectDB();
   const collection = db.collection("resume");
   await verifyAdmin();
   try {
-    const result = await collection.insertOne({ resumeLink, currentDate }); // Wrap resumeLink in an object
+    const result = await collection.insertOne({ resumeLink, currentDate });
     return new NextResponse(
       JSON.stringify({ message: "Data posted", result }),
       {
@@ -18,13 +18,13 @@ export const POST = async (request) => {
           "Content-Type": "application/json",
         },
       }
-    ); // Corrected NextResponse
+    );
   } catch (error) {
     return new NextResponse(JSON.stringify({ message: "Data post failed" }), {
       status: 500,
       headers: {
         "Content-Type": "application/json",
       },
-    }); // Corrected Response
+    });
   }
 };

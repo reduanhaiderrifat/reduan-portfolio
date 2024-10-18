@@ -13,9 +13,9 @@ const Social = () => {
   };
   useEffect(() => {
     if (session.status === "authenticated") {
-      router.push("/"); // Redirect to home page on successful login
+      router.push("/");
     }
-  }, [session.status, router]); // Dependency array includes status and router
+  }, [session.status, router]);
   return (
     <div className="flex items-center gap-4 justify-center">
       <div className="">

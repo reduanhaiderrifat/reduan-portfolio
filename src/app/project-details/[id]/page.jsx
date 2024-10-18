@@ -5,7 +5,7 @@ import { Nosifer } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
+const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] });
 const ProjectDetails = ({ params }) => {
   const [loading, SetLoading] = useState(true);
   const axiosPublic = usePublic();
@@ -13,10 +13,8 @@ const ProjectDetails = ({ params }) => {
   const loadedData = async () => {
     if (params?.id) {
       try {
-        // Fetch project details
         const res = await axiosPublic.get(`/project-details/api/${params.id}`);
 
-        // Assuming setData expects the data directly, update it with the fetched result
         setData(res.data.result);
         SetLoading(false);
       } catch (error) {
@@ -81,7 +79,6 @@ const ProjectDetails = ({ params }) => {
 
         <p className="mt-6">{project?.content}</p>
 
-        {/* Render skills list */}
         <div className="mt-8">
           <h2 className="text-xl font-bold">Technologies & Skills:</h2>
           <ul>

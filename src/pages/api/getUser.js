@@ -1,11 +1,9 @@
-// src/pages/api/getUser.js
 import { connectDB } from "@/lib/connectDB";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
-    const { email } = req.query; // Get email from query parameters
+    const { email } = req.query;
 
-    // Connect to the database
     const db = await connectDB();
     const user = await db.collection("users").findOne({ email });
 
