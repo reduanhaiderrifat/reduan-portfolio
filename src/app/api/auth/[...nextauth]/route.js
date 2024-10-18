@@ -49,7 +49,7 @@ export const authOptions = {
           const userCollection = db.collection("users");
           const exist = await userCollection.findOne({ email });
           if (!exist) {
-            await userCollection.insertOne({ ...user, role: "admin" });
+            await userCollection.insertOne({ ...user, role: "user" });
             return user;
           } else {
             return user;

@@ -75,7 +75,7 @@ const SignupPage = () => {
         setIsOtpSent(false);
         setOtp("");
         if (res.status === 200) {
-          router.push("/");
+          router.push("/login");
 
           toast(<CustomToast title="Success!" message="Sigup successfully" />, {
             autoClose: false,
@@ -96,6 +96,17 @@ const SignupPage = () => {
           });
         }
       } catch (error) {
+        toast(
+          <ErrorToast title="Error!" message="This gmail is already use." />,
+          {
+            autoClose: false,
+            closeOnClick: true,
+            draggable: true,
+            progress: undefined,
+            className: "border-2 border-red-500 ",
+            theme: "dark",
+          }
+        );
         console.error(
           "Error during signup:",
           error.response ? error.response.data : error.message

@@ -45,7 +45,7 @@ const LightSwitch = ({ section1Ref }) => {
   return (
     <div ref={section1Ref} className={`${isOn ? "on" : ""}`}>
       <h1
-        className={`text-white text-center pb-[80px] lg:pb-0 text-4xl font-bold ${nosifer.className}`}
+        className={`text-white text-center pb-[80px] pt-2 lg:pb-0 text-4xl font-bold ${nosifer.className}`}
       >
         About Me
       </h1>
@@ -81,7 +81,7 @@ const LightSwitch = ({ section1Ref }) => {
         </div>
 
         {isOn && !loading && resume?.length > 0 && (
-          <Link href={resume[0]?.resumeLink} className="btn ">
+          <Link href={resume[0]?.resumeLink} className="btn lg:mt-12">
             Download Resume <FaDownload />
           </Link>
         )}

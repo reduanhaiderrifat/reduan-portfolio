@@ -7,9 +7,8 @@ import React, { useEffect } from "react";
 const Social = () => {
   const router = useRouter();
   const session = useSession();
-  const handlesosial = (provider) => {
-    const res = signIn(provider, { redirect: false });
-    console.log(res);
+  const handlesosial = async (provider) => {
+    await signIn(provider, { redirect: false });
   };
   useEffect(() => {
     if (session.status === "authenticated") {
