@@ -81,7 +81,12 @@ const Navbar = () => {
             <ul
               ref={dropdownRef}
               tabIndex={0}
-              className="menu menu-lg space-y-2 dropdown-content bg- rounded-box z-100 mt-3 w-52 p-2 shadow hidden"
+              style={{
+                position: "absolute", // Ensure it positions above elements
+                top: "100%", // To make sure it appears below the button
+                left: "0",
+              }}
+              className="menu menu-lg space-y-2 dropdown-content bg-black rounded-box z-10000 mt-3 w-52 p-2 shadow hidden"
             >
               {links.map((link, index) => (
                 <li key={index}>
