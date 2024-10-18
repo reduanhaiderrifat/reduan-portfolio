@@ -10,7 +10,7 @@ import CustomToast from "./CustomToast";
 import { ScrollContext } from "@/service/ScrollProvider";
 import { usePathname } from "next/navigation";
 
-const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] }); // Initialize the font
+const nosifer = Nosifer({ weight: ["400"], subsets: ["latin"] });
 
 const Navbar = () => {
   const dropdownRef = useRef(null);
@@ -26,7 +26,7 @@ const Navbar = () => {
   } = useContext(ScrollContext);
 
   const [role, setRole] = useState({});
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Toggle state
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const session = useSession();
   const email = session?.data?.user?.email;
 
@@ -35,7 +35,7 @@ const Navbar = () => {
       axiosPublic
         .post(`/api/user-get`, { email })
         .then((response) => {
-          setRole(response.data); // Assuming response.data contains the role
+          setRole(response.data);
         })
         .catch((error) => {
           console.error("Error fetching user role:", error);
@@ -44,7 +44,7 @@ const Navbar = () => {
   }, [axiosPublic, email]);
 
   const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen); // Toggle the dropdown open/close
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   const handleSignOut = async () => {
