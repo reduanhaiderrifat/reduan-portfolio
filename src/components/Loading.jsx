@@ -14,7 +14,6 @@ const Loading = () => {
         <p style={{ "--i": 8 }}>.</p>
         <p style={{ "--i": 9 }}>.</p>
         <p style={{ "--i": 10 }}>.</p>
-        <p style={{ "--i": 11 }}>.</p>
       </div>
     </div>
   );
